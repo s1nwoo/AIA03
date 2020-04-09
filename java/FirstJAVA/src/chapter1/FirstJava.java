@@ -19,10 +19,12 @@ public class FirstJava {
 		
 		// 문제 2.
 		System.out.println(15);
-		System.out.println("5+10=" + 15);
-		System.out.println(5+10);
-		System.out.println("5+10" + "의 연산결과는 15입니다.");
-		System.out.println("5+10=" + 1+5);
+		System.out.println("15");
+		System.out.println(1+"5");
+		System.out.println(10+5);
+		System.out.println("1"+5);
+		
+		
 	}
 
 }
