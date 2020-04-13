@@ -16,7 +16,6 @@ public class Test3 {
 		num3 = num1 + num2;
 		// 연산의 결과를 출력
 		System.out.println(num3);
-	
 		
 		
 	}
