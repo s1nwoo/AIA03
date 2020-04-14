@@ -16,10 +16,6 @@ public class MethodDefAdd {
 
 	public static void hiEveryone(int age, double height) {
 		System.out.println("좋은 아침입니다.");
-		
-		if(age < 20) {
-			return;
-		}
 		System.out.println("제 나이는 " + age + "세입니다.");
 		System.out.println("저의 키는 " +height+ "cm 입니다.");
 	}
