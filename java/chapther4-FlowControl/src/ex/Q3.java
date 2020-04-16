@@ -4,6 +4,8 @@ public class Q3 {
 
 	public static void main(String[] args) {
 
+//Q3. 조건연산자(3항 연산자)를 사용하지 않고, if~else를 사용하는 형태로 변경해 보자.		
+		
 		// num1, num2 변수에 각각의 수를 받는다.
 		int num1 = 50, num2 = 100;
 		// 큰 수는 big, 차이는 diff라고 변수를 설정한다.

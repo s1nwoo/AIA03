@@ -7,7 +7,7 @@ public class MethodDefAdd {
 		System.out.println("프로그램의 시작");
 		hiEveryone(10, 110.5);
 		hiEveryone(20, 180.2);
-		hiEveryone(17, 178.9);
+		hiEveryone(17, 178.9); 
 		hiEveryone(25, 160);
 		hiEveryone(15, 165.7);
 		hiEveryone(19, 170);

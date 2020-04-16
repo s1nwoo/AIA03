@@ -16,11 +16,14 @@ public class Q2 {
 		// if문 조건에 num이 0보다 작을 시 "0 미만" 출력하기.
 		if (num < 0) {
 			System.out.println("0 미만");
+			//조건식1이 false이고 아래 조건식이 true시 "0이상 100미만" 출력하기
 		} else if (0 <= num && num < 100) {
 			System.out.println("0이상 100 미만");
-		} else if (100 <= num && num < 200)
+			//조건식2가 false이고 아래 조건식이 true시 "100이상 200미만" 출력하기
+		} else if (100 <= num && num < 200) {
 			System.out.println("100이상 200미만");
-		else if (200 <= num && num < 300) {
+			//조건식3이 false이고 아래 조건식이 true시 "100이상 200미만" 출력하기
+		} else if (200 <= num && num < 300) {
 			System.out.println("200이상 300미만");
 		} else {
 			System.out.println("300이상");
