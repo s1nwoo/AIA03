@@ -13,7 +13,7 @@ public class FruitMain {
 		
 		// 바이어가 사과를 구매
 		buyer.buyApple(seller, 5000);
-		System.out.println("구매자가 5000원 을 지불해서 사과를 구매했습니다.");
+		System.out.println("구매자가 5000원을 지불해서 사과를 구매했습니다.");
 		
 		System.out.println("판매자 판매 정보 출력");
 		System.out.println("현재 사과의 개수 : " + seller.numOfApple);
@@ -25,6 +25,7 @@ public class FruitMain {
 		System.out.println("보유한 사과의 개수 : " + buyer.numOfApple);
 		
 		
+
 		
 		
 
