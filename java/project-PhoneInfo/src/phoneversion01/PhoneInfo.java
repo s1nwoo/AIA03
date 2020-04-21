@@ -1,18 +1,18 @@
 package phoneversion01;
 
-public class PhoneInfor {
+public class PhoneInfo {
 
 	String name;
 	String phoneNumber;
 	String brithday;
 	
-	public PhoneInfor(String name, String num, String day) {
+	public PhoneInfo(String name, String num, String day) {
 		this.name = name;
 		this.phoneNumber = num;
 		this.brithday = day;
 	}
 	
-	public PhoneInfor(String name, String num) {
+	public PhoneInfo(String name, String num) {
 		this.name = name;
 		this.phoneNumber = num;
 		this.brithday = "[미입력]";
@@ -26,8 +26,8 @@ public class PhoneInfor {
 	
 	public static void main(String[] args) {
 		
-		PhoneInfor ph1 = new PhoneInfor("정신우", "010-xxxx-7317", "920928");
-		PhoneInfor ph2 = new PhoneInfor("홍길동", "010-xxxx-4444");
+		PhoneInfo ph1 = new PhoneInfo("정신우", "010-xxxx-7317", "920928");
+		PhoneInfo ph2 = new PhoneInfo("홍길동", "010-xxxx-4444");
 		ph1.showData();
 		ph2.showData();
 	}
