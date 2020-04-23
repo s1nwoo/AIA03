@@ -17,21 +17,25 @@ public class Q1 {
 	
 	public static void main(String[] args) {
 
-		// 배열의 길이는 5까지의 
+		// 배열의 길이는 1~5 사이의 임의로 결정된다.
 		int[] arr = new int[(int)(Math.random()*5)+1];
 		
+		// 사용자로부터 입력값 
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("임의의 숫자 정수 5개를 입력하세요");
 		
+		// arr의 길이만큼 입력을 반복해 받는다.
 		for(int i = 0; i<arr.length;i++) {
 			arr[i]= sc.nextInt();
 		
 		}
+		// 최대값, 최소값 출력문
 		System.out.println("입력하신 숫자 중 최대값은 " + maxValue(arr));
 		System.out.println("입력하신 숫자 중 최소값은 " + minValue(arr));
 	}
 	
+	// 최소값 설정
 	public static int minValue(int[] arr) {
 		int min = arr[0];
 		for(int i=0;i<arr.length;i++) {
@@ -42,6 +46,7 @@ public class Q1 {
 		return min;
 	}
 	
+	// 최대값 설정
 	public static int maxValue(int[] arr) {
 		int max = arr[0];
 		for(int i=0;i<arr.length;i++) {
