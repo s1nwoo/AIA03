@@ -2,34 +2,21 @@ package friend;
 
 import java.util.Scanner;
 
-public class FriendInfoHandler {
+public class FriendInfoHandler2 {
 
-	// 2020.04.28
-	// 수정사항: 싱글톤 처리
-	//1-1 생성자 접근제어지시자 : private
-	//	   인스턴스 생성 금지
-	//1-2 공동으로 사용할 인스턴스 생성 : static private
-	//1-3 참조변수 반환 메서드 : static public
-	
-	private static FriendInfoHandler handler = new FriendInfoHandler(100);
-	
-	public static FriendInfoHandler getInstance() {
-		return handler;
-	}
-	
+
 	// Friend 타입의 정보를 저장할 배열을 가진다.
 	// 친구정보를 저장하는 기능
 	// 친구정보의 기본 정보 출력 기능
 	// 친구정보 상세 정보 출력 기능
 	
-	
-	private Friend[] myFriends;	// Friend 타입의 배열 선언
-	private int numOfFriend;	// 저장된 친구의 정보개수
+	Friend[] myFriends;	// Friend 타입의 배열 선언
+	int numOfFriend;	// 저장된 친구의 정보개수
 	
 	Scanner kb;
 	
 	// 초기화: 저장공간(사이즈) 크기를 받아서 배열 생성
-	private FriendInfoHandler(int num) {
+	public FriendInfoHandler2(int num) {
 		myFriends = new Friend[num];
 		numOfFriend=0;
 		kb = new Scanner(System.in);
