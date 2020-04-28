@@ -5,7 +5,7 @@ public class AbstractInterfaceMain {
 	public static void main(String[] args) {
 	
 	//PersonalNumberStorage storage = new PersnalNumberStorageImpl(100);
-	
+		
 	PersnalNumber storage = new PersnalNumberStorageImpl(100);
 	
 	storage.addPersnalInfo("202020-1111111", "손흥민");
