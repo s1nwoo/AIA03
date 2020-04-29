@@ -1,15 +1,20 @@
 package phoneversion05;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import phoneversion05.exception.BadNumberException;
+import phoneversion05.exception.StringEmptyException;
 
 // PhoneInfo 타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력하는 기능
 public class PhoneInfoHandler {
 
 	private static PhoneInfoHandler handler = new PhoneInfoHandler(100);
+
 	public static PhoneInfoHandler getInstace() {
 		return handler;
 	}
-	
+
 	// 1. 배열 선언
 	PhoneInfo[] myPhones;
 	int numOfPhone;
@@ -17,7 +22,7 @@ public class PhoneInfoHandler {
 	Scanner kb;
 
 	// 생성자를 통해서 배열 생성
-	public PhoneInfoHandler(int num) {
+	private PhoneInfoHandler(int num) {
 		// 배열의 생성
 		myPhones = new PhoneInfo[num];
 		// 요소의 개수 초기화
@@ -38,70 +43,123 @@ public class PhoneInfoHandler {
 	// 2-2 사용자로부터 받은 데이터로 인스턴스 생성
 	void createInfo() {
 
-		System.out.println(" 1.일반 2.대학 3.회사 4.동호회");
-		System.out.println("입력하고자 하는 번호를 입력하세요");
+//		System.out.println(" 1.일반 2.대학 3.회사 4.동호회");
+//		System.out.println(" 1.대학 2.회사 3.동호회");
+//		System.out.println("입력하고자 하는 번호를 입력하세요");
 //		int select = kb.nextInt();
 //		kb.nextLine();
 
 //		사용자 선택 번호
-		int select = Integer.parseInt(kb.nextLine());
+		int select = 0;
 
-		if (!(select > 0 && select < 5)) {
-			System.out.println("정상적인 메뉴 선택이 아닙니다.\n 메뉴를 다시 선택하세요.");
-			return;
+		while (true) {
+			System.out.println(" 1.대학 2.회사 3.동호회");
+			System.out.println("입력하고자 하는 번호를 입력하세요");
+
+			try {
+				select = kb.nextInt();
+
+				// 정상범위 1~3
+				if (!(select >= MenuInterface.UNIV && select <= MenuInterface.CAFE)) {
+					BadNumberException e = new BadNumberException("메뉴 범위를 벗어나는 번호입니다");
+
+					// 강제적인 예외 발생
+					throw e;
+				}
+
+			} catch (InputMismatchException e) {
+				System.out.println("잘못된 메뉴 입력입니다.\n숫자로 입력하세요.");
+//				handler.kb.nextLine();
+				continue;
+			} catch (BadNumberException e) {
+				System.out.println("메뉴 범위를 벗어난 숫자 입력입니다.\n다시 확인 후 입력하세요.");
+				continue;
+			} catch (Exception e) {
+				System.out.println("잘못된 메뉴 입력입니다.\n숫자로 입력하세요.");
+				continue;
+			} finally {
+				handler.kb.nextLine();
+			}
+
+			break;
+
 		}
 
-		// 2-2-1 기본 정보 수집: 이름, 번호, 주소, 이메일
-		System.out.println("이름을 입력하세요");
-		String name = kb.nextLine();
-
-		System.out.println("번호를 입력하세요");
-		String phoneNumber = kb.nextLine();
-
-		System.out.println("주소를 입력하세요");
-		String address = kb.nextLine();
-
-		System.out.println("이메일을 입력하세요");
-		String email = kb.nextLine();
+//		if (!(select > 0 && select < 5)) {
+//			System.out.println("정상적인 메뉴 선택이 아닙니다.\n 메뉴를 다시 선택하세요.");
+//			return;
+//		}
 
 		PhoneInfo info = null;
+		
+		String name = null, phoneNumber=null, address=null, email=null;
 
-		switch (select) {
-		case 1:
-			// 2-2-2 기본 클래스로 인스턴스 생성
-			info = new PhoneInfo(name, phoneNumber, address, email);
+		while (true) {
+
+			// 2-2-1 기본 정보 수집: 이름, 번호, 주소, 이메일
+			System.out.println("이름을 입력하세요");
+			name = kb.nextLine();
+
+			System.out.println("번호를 입력하세요");
+			phoneNumber = kb.nextLine();
+
+			System.out.println("주소를 입력하세요");
+			address = kb.nextLine();
+
+			System.out.println("이메일을 입력하세요");
+			email = kb.nextLine();
+			
+			try {
+				if (name.trim().isEmpty() || phoneNumber.trim().isEmpty() || address.trim().isEmpty()
+						|| email.trim().isEmpty()) {
+					StringEmptyException e = new StringEmptyException();
+					throw e;
+				}
+			} catch (StringEmptyException e) {
+				System.out.println("기본정보는 공백없이 입력하세요.");
+				continue;
+			}
+			
 			break;
-		case 2:
-			// 2-2-3 대학 클래스로 인스턴스 생성
-			System.out.println("전공(학과)를 입력하세요");
-			String major = kb.nextLine();
-			System.out.println("학년 정보를 입력하세요");
-			String grade = kb.nextLine();
-			// PhoneUnivInfo 인스턴스 생성
-			info = new PhoneUnivInfo(name, phoneNumber, address, email, major, grade);
-			break;
-		case 3:
-			// 2-2-4 회사 클래스로 인스턴스 생성
-			System.out.println("회사의 이름를 입력하세요");
-			String company = kb.nextLine();
-			System.out.println("부서의 이름을 입력하세요");
-			String dept = kb.nextLine();
-			System.out.println("직무 정보를 입력하세요");
-			String job = kb.nextLine();
-			// PhoneCompaanyInfo 인스턴스 생성
-			info = new PhoneCompanyInfo(name, phoneNumber, address, email, company, dept, job);
-			break;
-		case 4:
-			// 2-2-5 동호회 클래스로 인스턴스 생성
-			System.out.println("동호회의 이름을 입력하세요");
-			String cafeName = kb.nextLine();
-			System.out.println("닉네임을 입력하세요");
-			String nickName = kb.nextLine();
-			// PhoneCafeInfo 인스턴스 생성
-			info = new PhoneCafeInfo(name, phoneNumber, address, email, cafeName, nickName);
-			break;
+			
 		}
+			switch (select) {
+			// case 1:
+			// // 2-2-2 기본 클래스로 인스턴스 생성
+			// info = new PhoneInfo(name, phoneNumber, address, email);
+			// break;
+			case MenuInterface.UNIV:
+				// 2-2-3 대학 클래스로 인스턴스 생성
+				System.out.println("전공(학과)를 입력하세요");
+				String major = kb.nextLine();
+				System.out.println("학년 정보를 입력하세요");
+				String grade = kb.nextLine();
+				// PhoneUnivInfo 인스턴스 생성
+				info = new PhoneUnivInfo(name, phoneNumber, address, email, major, grade);
+				break;
+			case MenuInterface.COMPANY:
+				// 2-2-4 회사 클래스로 인스턴스 생성
+				System.out.println("회사의 이름를 입력하세요");
+				String company = kb.nextLine();
+				System.out.println("부서의 이름을 입력하세요");
+				String dept = kb.nextLine();
+				System.out.println("직무 정보를 입력하세요");
+				String job = kb.nextLine();
+				// PhoneCompaanyInfo 인스턴스 생성
+				info = new PhoneCompanyInfo(name, phoneNumber, address, email, company, dept, job);
+				break;
+			case MenuInterface.CAFE:
+				// 2-2-5 동호회 클래스로 인스턴스 생성
+				System.out.println("동호회의 이름을 입력하세요");
+				String cafeName = kb.nextLine();
+				System.out.println("닉네임을 입력하세요");
+				String nickName = kb.nextLine();
+				// PhoneCafeInfo 인스턴스 생성
+				info = new PhoneCafeInfo(name, phoneNumber, address, email, cafeName, nickName);
+				break;
+			}
 
+		
 		// 2-3 생성된 인스턴스를 배열에 저장
 		addPhoneInfo(info);
 	}
@@ -114,6 +172,7 @@ public class PhoneInfoHandler {
 		System.out.println("전체 정보를 출력합니다");
 		for (int i = 0; i < numOfPhone; i++) {
 			myPhones[i].ShowData();
+			System.out.println("------------------");
 		}
 
 	}
@@ -166,7 +225,7 @@ public class PhoneInfoHandler {
 	}
 
 	// 6. 배열의 정보를 수정 : 이름 기준
-	void editInfo() {
+	void editInfo () {
 		System.out.println("수정하실 이름을 입력하세요");
 		String name = kb.nextLine();
 		int index = searchIndex(name);
@@ -178,13 +237,33 @@ public class PhoneInfoHandler {
 
 			System.out.println("수정 데이터 입력을 시작합니다");
 			System.out.println("이름은 " + editname + "입니다");
-			System.out.println("전화번호를 입력하세요");
-			String phoneNumber = kb.nextLine();
-			System.out.println("주소를  입력하세요");
-			String address = kb.nextLine();
-			System.out.println("이메일을 입력하세요");
-			String email = kb.nextLine();
-
+			
+			
+			// 수정 시 기본정보 공백 예외처리
+			while(true) {
+				System.out.println("전화번호를 입력하세요");
+				String phoneNumber = kb.nextLine();
+				System.out.println("주소를  입력하세요");
+				String address = kb.nextLine();
+				System.out.println("이메일을 입력하세요");
+				String email = kb.nextLine();
+				
+				try {
+					if(phoneNumber.trim().isEmpty() || address.trim().isEmpty()
+							|| email.trim().isEmpty()) {
+						StringEmptyException e = new StringEmptyException();
+						throw e;
+					}
+				} catch (StringEmptyException e) {
+					System.out.println("수정 시 기본정보는 공백없이 입력하세요");
+					continue;
+				}
+				
+				break;
+				
+			}
+		
+			String phoneNumber=null, address=null, email=null;
 			PhoneInfo info = null;
 
 			// 저장된 인스턴스 : 기본, 대학, 회사, 동호회
@@ -213,9 +292,10 @@ public class PhoneInfoHandler {
 
 				info = new PhoneCafeInfo(editname, phoneNumber, address, email, cafeName, nickName);
 
-			} else if (myPhones[index] instanceof PhoneInfo) {
-				info = new PhoneInfo(editname, phoneNumber, address, email);
 			}
+//			else if (myPhones[index] instanceof PhoneInfo) {
+//				info = new PhoneInfo(editname, phoneNumber, address, email);
+//			}
 
 			// 배열에 새로운 인스턴스를 저장
 			myPhones[index] = info;
@@ -223,19 +303,5 @@ public class PhoneInfoHandler {
 		}
 
 	}
-
-	// 친구정보의 기본 정보 출력 기능
-	void showAllSimpleData() {
-
-		System.out.println("=== 친구의 기본 정보를 출력합니다 ===");
-
-		for (int i = 0; i < numOfPhone; i++) {
-			myPhones[i].showBasicInfo();
-			System.out.println("---------------");
-		}
-
-	}
-
-	// 친구정보 상세 정보 출력 기능
 
 }

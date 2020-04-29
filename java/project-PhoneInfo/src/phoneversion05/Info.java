@@ -1,7 +1,8 @@
 package phoneversion05;
 
 public interface Info {
-
-	void showData();
+	
+	// public abstract 생략
+	void ShowData();
 	
 }

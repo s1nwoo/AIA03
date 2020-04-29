@@ -12,9 +12,8 @@ public interface MenuInterface {
 	int EXIT=6;
 	
 	// createInfo 메뉴
-	int NOMAL=1;
-	int UNIV=2;
-	int COMPANY=3;
-	int CAFE=4;
+	int UNIV=1;
+	int COMPANY=2;
+	int CAFE=3;
 	
 }
