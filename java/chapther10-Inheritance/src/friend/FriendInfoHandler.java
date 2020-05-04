@@ -1,5 +1,6 @@
 package friend;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FriendInfoHandler {
@@ -24,6 +25,11 @@ public class FriendInfoHandler {
 	
 	
 	private Friend[] myFriends;	// Friend 타입의 배열 선언
+	
+	// List 참조변수
+	
+//	private ArrayList<Friend> myFriends;
+	
 	private int numOfFriend;	// 저장된 친구의 정보개수
 	
 	Scanner kb;
@@ -32,6 +38,10 @@ public class FriendInfoHandler {
 	private FriendInfoHandler(int num) {
 		myFriends = new Friend[num];
 		numOfFriend=0;
+		
+		// ArrayList 인스턴스 생성
+//		myFriends = new ArrayList<Friend>();
+		
 		kb = new Scanner(System.in);
 	}
 	
@@ -44,6 +54,9 @@ public class FriendInfoHandler {
 		// 배열에 저장
 		myFriends[numOfFriend]=f;
 		numOfFriend++;
+		
+//		myFriends.add(f);
+		
 	}
 	
 	// 2. 사용자에게 데이터를 받아 사용자 요청에 맞는 인스턴스 생성
