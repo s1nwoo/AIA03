@@ -3,13 +3,12 @@ package phoneversion06;
 import java.util.InputMismatchException;
 
 import phoneversion05.exception.BadNumberException;
-import phoneversion05.exception.StringEmptyException;
 
 public class PhoneMain {
 
 	public static void main(String[] args) {
 		
-		PhoneInfoHandler handler = PhoneInfoHandler.getInstace();
+		PhoneInfoHandler hand = PhoneInfoHandler.getInstace();
 		
 		while(true) {
 			
@@ -18,7 +17,7 @@ public class PhoneMain {
 			int choice = 0;
 			
 			try {
-				choice = handler.kb.nextInt();
+				choice = hand.kb.nextInt();
 				
 				// 정상 범위는 1~6
 				// MenuInterface.INSERT_INFO ~ MenuInterface.EXIT
@@ -40,26 +39,26 @@ public class PhoneMain {
 				System.out.println("잘못된 메뉴 입력입니다.\n숫자로 입력하세요.");
 				continue;
 			} finally {
-				handler.kb.nextLine();
+				hand.kb.nextLine();
 			}
 			
 //			handler.kb.nextLine(); // 앞의 버퍼 클리어
 		
 			switch(choice) {
 			case MenuInterface.INSERT_INFO: 
-				handler.createInfo();
+				hand.createInfo();
 				break;
 			case MenuInterface.INFO_SERCH:
-				handler.showInfo();
+				hand.showInfo();
 				break;
 			case MenuInterface.INFO_DELETE:
-				handler.delteInfo();
+				hand.delteInfo();
 				break;
 			case MenuInterface.INFO_EDIT:
-				handler.editInfo();
+				hand.editInfo();
 				break;	
 			case MenuInterface.SHOW_ALL:
-				handler.showAllData();
+				hand.showAllData();
 				break;
 			case MenuInterface.EXIT:
 				System.out.println("프로그램을 종료합니다");
