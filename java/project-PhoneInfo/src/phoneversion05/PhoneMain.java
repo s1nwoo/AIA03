@@ -16,7 +16,7 @@ public class PhoneMain {
 			Menu.showMenu();
 			
 			int choice = 0;
-			
+			//수정?
 			try {
 				choice = handler.kb.nextInt();
 				
