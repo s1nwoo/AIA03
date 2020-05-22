@@ -72,17 +72,22 @@ where c.custid = o.custid and b.bookid = o.bookid order by name;
 
 --(12) 도서의가격(Book테이블)과 판매가격(Orders테이블)의 차이가 가장 많은 주문
 
-select o.orderid as "주문번호", b.price - o.saleprice as "가격 차이"
+select o.orderid, b.price - o.saleprice as "diff"
 from book b ,orders o
 where b.bookid = o.bookid;
 
-select *
-from (select o.orderid as "주문번호", b.price - o.saleprice as "가격 차이"
+select rownum, cs."주문번호", cs."가격 차이"
+from (select o.orderid, b.price - o.saleprice as "diff"
 from book b ,orders o
-where b.bookid = o.bookid) cs
-having max(cs."가격 차이"); > cs.
-
-
+where b.bookid = o.bookid)
+order by cs."가격 차이" desc;
+ 
+ 
+select *
+from (select orderid, price-saleprice as diff from book b, orders o where b.bookid=o.bookid order by diff desc)
+where rownum=1; -- 첫번째
+ 
+ 
 --(13) 도서의 판매액평균보다 자신의 구매액평균이 더 높은 고객의 이름
 
 
