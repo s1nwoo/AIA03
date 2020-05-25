@@ -56,7 +56,8 @@ from orders;
 
 select c.name, sum(o.saleprice)
 from customer c, orders o
-where c.custid = o.custid group by c.name;
+where c.custid = o.custid 
+group by c.name;
 
 
 --(11) 고객의 이름과 고객이 구매한 도서목록
@@ -72,25 +73,43 @@ where c.custid = o.custid and b.bookid = o.bookid order by name;
 
 --(12) 도서의가격(Book테이블)과 판매가격(Orders테이블)의 차이가 가장 많은 주문
 
-select o.orderid, b.price - o.saleprice as "diff"
-from book b ,orders o
-where b.bookid = o.bookid;
-
-select rownum, cs."주문번호", cs."가격 차이"
-from (select o.orderid, b.price - o.saleprice as "diff"
-from book b ,orders o
-where b.bookid = o.bookid)
-order by cs."가격 차이" desc;
- 
- 
 select *
-from (select orderid, price-saleprice as diff from book b, orders o where b.bookid=o.bookid order by diff desc)
-where rownum=1; -- 첫번째
+from book b join orders o on b.bookid = o.bookid
+where price - saleprice >= all(select price - saleprice from book b ,orders o where b.bookid = o.bookid);
  
  
---(13) 도서의 판매액평균보다 자신의 구매액평균이 더 높은 고객의 이름
+ 
+ --(13) 도서의 판매액평균보다 자신의 구매액평균이 더 높은 고객의 이름
+SELECT * FROM book;
+SELECT * FROM Customer;
+SELECT * FROM Orders;
+
+select avg(saleprice)
+from orders;
+
+select name
+from orders o join customer c on c.custid=o.custid
+group by name
+having avg(saleprice) > (select avg(price) from book b, orders o where b.bookid = o.bookid);
 
 
---3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
+--3. 마당서점에서 다음의 심화된 질문에 대해 SQL문을 작성하시오.
+
 --(1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+select *
+from orders o, customer c, book b 
+where o.custid=c.custid and o.bookid = b.bookid;
+
+select name
+from orders o, customer c, book b
+where c.custid = o.custid and b.bookid = o.bookid and publisher in(select publisher from orders o natural join book b 
+where custid = (select custid from customer where name = '박지성')) and name != '박지성';
+
+
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+select name
+from orders o, customer c, book b 
+where o.custid=c.custid and o.bookid = b.bookid
+group by name
+having count(distinct publisher) >= 2;
+
