@@ -53,14 +53,10 @@ where sal < any(select sal from emp where job = 'ANALYST');
 
 
 -- 49. 부하직원이 없는 사원의 이름을 표시하시오.
-select distinct(e2.ename) from emp e, emp e2 where e.mgr = e2.empno;
-
-select * from emp;
-select ename from emp where mgr = empno;
 
 select ename 
-from emp 
-where ename not in (select distinct(e2.ename) from emp e, emp e2 where e.mgr = e2.empno);
+from emp e
+where ename not in (select distinct(e.ename) from emp e2 where e2.mgr = e.empno);
  
 
 -- 50. 부하직원이 있는 사원의 이름을 표시하시오.
@@ -131,11 +127,12 @@ where sal > (select avg(sal) from emp) and ename like '%M%';
 
  
 -- 58. 평균급여가 가장 적은 업무를 찾으시오.
--- select job, avg(sal) from emp group by job order by avg(sal);
+--select job, avg(sal) from emp group by job order by avg(sal);
 
-select rownum, job
-from (select job, avg(sal) from emp group by job order by avg(sal))
-where rownum = 1;
+select job, avg(sal)
+from emp
+group by job
+having avg(sal) <= all(select avg(sal) from emp group by job);
 
 
 --59. 담당업무가 MANAGER 인 사원이 소속된 부서와 동일한 부서의 사원을 표시하시오.
