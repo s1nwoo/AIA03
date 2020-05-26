@@ -193,7 +193,7 @@ create table emp07(
 
 DESC EMP07;
 INSERT into emp07 values(1111, 'TEST', 'MANAGER', 10, 'F', 3000, '');
-INSERT into emp07 values(1112, 'TEST', NULL, 10, 'M', 5000, NULL);
+INSERT into emp07 values(1113, 'TEST', NULL, 40, 'M', null, NULL);
 
 SELECT * FROM EMP07;
 
