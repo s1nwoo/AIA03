@@ -57,7 +57,7 @@ create table phoneInfo_univ(
     
     constraint phoneInfo_univ_year_ck check (fr_u_year > 0  and  fr_u_year < 5),
     constraint phoneInfo_univ_idx_pk primary key(idx),
-    constraint phoneInfo_univ_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx)
+    constraint phoneInfo_univ_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx) on delete cascade
 );    
 
 create table phoneInfo_com(
@@ -66,7 +66,7 @@ create table phoneInfo_com(
     fr_ref number(6),   
     
     constraint phoneInfo_com_idx_pk primary key(idx),
-    constraint phoneInfo_com_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx)
+    constraint phoneInfo_com_fr_ref_fk foreign key(fr_ref) references phoneInfo_basic(idx) on delete cascade
 );
 
 
@@ -120,5 +120,79 @@ insert into PhoneInfo_com values (0003, '맨체스터시티', 3);
 select * from phoneinfo_basic b, phoneinfo_univ u, phoneinfo_com c where b.idx=u.fr_ref(+) and b.idx=c.fr_ref(+);
 select * from phoneinfo_basic b, phoneinfo_univ u where b.idx=u.fr_ref;
 select * from phoneinfo_basic b, phoneinfo_com c where b.idx=c.fr_ref; 
+
+drop view pd_univ_view;
+
+-- view : pb_all_view
+create or replace view pb_all_view 
+as select b.idx, b.fr_name, b.fr_phonenum, b.fr_email, b.fr_address, b.fr_regdate,
+          u.fr_u_major, u.fr_u_year, c.fr_c_company
+from phoneinfo_basic b, phoneinfo_univ u, phoneinfo_com c
+where b.idx = u.fr_ref(+) and b.idx = c.fr_ref(+);
+
+select * from pb_all_view;
+
+-- view : pb_univ_view
+create or replace view pb_univ_view 
+as select b.idx, b.fr_name, b.fr_phonenum, b.fr_email, b.fr_address, b.fr_regdate,
+          u.fr_u_major, u.fr_u_year
+from phoneinfo_basic b ,phoneinfo_univ u
+where b.idx=u.fr_ref;
+
+select * from pb_univ_view;
+
+-- view : pb_com_view
+create or replace view pb_com_view 
+as select b.idx, b.fr_name, b.fr_phonenum, b.fr_email, b.fr_address, b.fr_regdate,
+          c.fr_c_company
+from phoneinfo_basic b, phoneinfo_com c
+where b.idx=c.fr_ref; 
+
+select * from pb_com_view;
+
+---------------------------------------------------
+-- 수정을 위한 SQL
+---------------------------------------------------
+--1. 회사 친구의 정보 변경
+update phoneinfo_basic set fr_address = 'spain' where idx = 2;
+
+update phoneinfo_com
+set fr_c_company = '은퇴' 
+where idx = 2;
+
+--2. 학교 친구의 정보 변경 
+update phoneinfo_univ
+set fr_u_major = '공미'
+where idx = 1;
+
+
+---------------------------------------------------
+-- 삭제를 위한 sql
+---------------------------------------------------
+--1. 회사 친구 정보를 삭제
+delete from phoneinfo_com
+where fr_c_company = '은퇴';
+
+--2. 학교 친구 정보를 삭제
+delete from phoneinfo_univ
+where fr_u_major = '공미';
+
+delete from (select * from phoneInfo_basic b right outer join phoneInfo_com c on b.idx = c.fr_ref where c.idx=3);
+
+delete from phoneinfo_basic b where exists (select * from phoneinfo_com c where b.idx = c.fr_ref and b.fr_name = '아게로');
+
+-- 기본정보 수정
+update phoneinfo_basic set fr_address = 'spain' where idx = 2;
+
+-- 상세정보 삭제 + 기본정보 삭제
+delete from phoneinfo_basic b where exists (select * from phoneinfo_com c where b.idx = c.fr_ref and b.fr_name = '아게로');
+
+
+-- 외래키 설정시 부모의 행이 살제 될때 설정
+-- references phoneinfo_basic(idx) on delete 설정 옵션
+-- no action : 모두 삭제불가
+-- cascade : 참조하고 있는 자식 테이블의 모든 행도 삭제
+-- set null : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 null로 변경
+-- set default : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 기본값으로 변경
 
 
