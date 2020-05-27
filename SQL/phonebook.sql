@@ -150,6 +150,13 @@ where b.idx=c.fr_ref;
 
 select * from pb_com_view;
 
+-- sequence
+create sequence pb_basic_idx_seq start with 0 minvalue 0;
+
+create sequence pb_com_idx_seq start with 0 minvalue 0;
+
+create sequence pb_univ_idx_seq start with 0 minvalue 0;
+
 ---------------------------------------------------
 -- 수정을 위한 SQL
 ---------------------------------------------------
