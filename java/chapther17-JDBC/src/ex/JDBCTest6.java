@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JDBCTest5 {
+public class JDBCTest6 {
 
 	public static void main(String[] args) {
 		
@@ -39,30 +39,30 @@ public class JDBCTest5 {
 			
 			//3. SQL 처리
 			//   Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL 문장)
-			
-			String sql = "select * from dept where deptno=?";
+			//   pstmt = conn.prepareStatement(SQL 문장)
+
+			String sql = "insert into dept (deptno, dname, loc) "
+					+ " values (?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			// 변수 데이터  설정
-			pstmt.setInt(1, 30);
+			pstmt.setInt(1, 70);
+			pstmt.setString(2, "마케팅");
+			pstmt.setString(3, "서울");
 			
-			rs = pstmt.executeQuery();
+			int resultCnt = pstmt.executeUpdate();
 			
-			
-			System.out.println("부서 리스트");
-			System.out.println("===============================");
-			// ResultSet -> 결과 참조
-			while(rs.next()) {
-				System.out.print(rs.getInt("deptno") + "\t");
-				System.out.print(rs.getString("dname") + "\t");
-				System.out.print(rs.getString("loc") + "\n");
+			if(resultCnt>0) {
+				System.out.println("정상적으로 입력 되었습니다.");
+				System.out.println(resultCnt + "행이 입력되었습니다.");
+			} else {
+				System.out.println("입력이 되지않았습니다. 확인후 재 시도해주세요.");
 			}
-			System.out.println("===============================");
 			
 			
-			//4. 데이터베이스 연결 종료
-			//rs.close();
+			
+			
+			
+			//4. 데이터베이스 연결 종료			
 			//pstmt.close();
 			//conn.close();
 			
@@ -76,6 +76,8 @@ public class JDBCTest5 {
 			e.printStackTrace();
 		} finally {
 
+			
+			//4. 데이터베이스 연결 종료	
 			if(rs != null) {
 				try {
 					rs.close();
