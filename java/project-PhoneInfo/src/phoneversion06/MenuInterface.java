@@ -14,6 +14,6 @@ public interface MenuInterface {
 	// createInfo 메뉴
 	int UNIV=1;
 	int COMPANY=2;
-	int CAFE=3;
+	int GAME=3;
 	
 }
