@@ -39,10 +39,10 @@ public class PhoneMain {
 			
 			switch(select) {
 			case 1:
-				pm.insertImfor();
+				pm.insertInfor();
 				break;
 			case 2:
-//				searchImfor();
+//				pm.searchInfor();
 				break;
 			case 3:
 //				deleteImfor();
@@ -51,7 +51,7 @@ public class PhoneMain {
 //				editImfor();
 				break;
 			case 5:
-//				listImfor();
+				pm.listInfor();
 				break;
 			case 6:
 				System.out.println("이용해주셔서 감사합니다.");
