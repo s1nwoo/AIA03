@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class DeptDao {
 
-	static Scanner sc = new Scanner(System.in);
 
 	// DAO = Data Acess Object
 	// 데이터베이스 처리 하는 클래스
