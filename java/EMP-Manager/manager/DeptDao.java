@@ -408,7 +408,6 @@ public class DeptDao {
 	}
 
 	public int deptSeachCount(String searchName) {
-
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
