@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS3 선택자 Selector</title>
+    <meta charset="utf-8">
+    <style>
+
+        body, p, h1, h2, h3, h4, h5, h6 { 
+            margin: 0; padding: 0; 
+        }
+        
+        
+        #header{
+            background-color: red;
+            width: 200px;
+            margin: 0 auto;
+        }
+        
+        #aside{
+            background-color: blue;
+        }
+        
+        #content{
+            background-color: green;
+        }
+        
+        li {
+            color: brown;
+        }
+/*
+        클래스 선택자
+        . 클래스 이름
+*/
+        .font_color {
+            color: blueviolet;
+        }
+        
+        .font_bold {
+            font-weight: bold;
+        }
+        
+        .font_size{
+            font-size: 24px;
+        }
+        
+        li.font_size{
+            font-size: : 150%;
+        }
+        
+        div.font_size{
+            font-size: 200%;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <ul>
+    <li class="font_color font_size">사과</li>
+    <li>바나나</li>
+    <li>오렌지</li>
+    <li class="font_bold font_color">딸기</li>
+    
+    </ul>
+    
+    <div class="font_size" id="header">header</div>
+    <div id="aside">aside</div>
+    <div id="content">content</div>
+    
+
+    
+    
+</body>
+
+
+</html>
