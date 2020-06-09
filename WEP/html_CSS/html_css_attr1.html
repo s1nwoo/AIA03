@@ -1,0 +1,159 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>CSS 속성</title>
+    <meta charset="utf-8">
+
+    <style>
+        /*
+
+        CSS에서 사용하는 단위 : px, %, em
+        px : 절대 단위
+        % : 비율
+        em : 배수
+        
+        16px = 1em = 100%
+        32px = 2em = 200%
+*/
+        tr:nth-child(1)>td:nth-child(2) {
+            font-size: 16px;
+            color: red;
+        }
+
+        tr:nth-child(1)>td:nth-child(3) {
+            font-size: 24px;
+            color: blue;
+        }
+
+        tr:nth-child(1)>td:nth-child(4) {
+            font-size: 32px;
+            color: green;
+        }
+
+        tr:nth-child(2)>td:nth-child(2) {
+            font-size: 1em;
+            color: #FF0000;
+        }
+
+        tr:nth-child(2)>td:nth-child(3) {
+            font-size: 1.5em;
+            color: #0000FF;
+        }
+
+        tr:nth-child(2)>td:nth-child(4) {
+            font-size: 2em;
+            color: #00FF00;
+        }
+
+        tr:nth-child(3)>td:nth-child(2) {
+            font-size: 100%;
+            color: rgb(255, 0, 0);
+        }
+
+        tr:nth-child(3)>td:nth-child(3) {
+            font-size: 150%;
+            color: rgb(0, 0, 255);
+        }
+
+        tr:nth-child(3)>td:nth-child(4) {
+            font-size: 200%;
+            color: rgb(0, 255, 0);
+        }
+
+        body {
+            background-image: url('../images/mini1.jpg');
+            background-size: 25%; 
+            background-repeat: no-repeat;
+            background-position: bottom right;
+            background-attachment: fixed;
+        }
+
+        hr {
+            border: 0;
+            border-top: thin solid #AAAAAA;
+        }
+
+        div.box {
+            width: 200px;
+            height: 200px;
+            border: 1px;
+            solid gray;
+        }
+
+        #box1 {
+            background-color: red;
+
+            border-width: 20px;
+            border-style: solid;
+            border-color: dimgrey;
+
+            padding: 10px
+        }
+
+        #box2 {
+            background-color: blue;
+            border: 20px solid #EEEEEE
+        }
+
+        span {
+            border: 1px solid red;
+        }
+
+        #box {
+            border: 1px solid blue;
+            display: inline;
+        }
+
+        #sp {
+            border: 1px solid green;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <span id="sp">Dummy</span>
+    <div id="box">
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    </div>
+    <span>Dummy</span>
+
+
+    <hr>
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+
+
+
+    <table border="1">
+
+        <tr>
+            <td>px</td>
+            <td>HTML5-16px</td>
+            <td>HTML5-24px</td>
+            <td>HTML5-32px</td>
+        </tr>
+
+        <tr>
+            <td>em</td>
+            <td>HTML5-1em</td>
+            <td>HTML5-1.5em</td>
+            <td>HTML5-2em</td>
+        </tr>
+
+        <tr>
+            <td>%</td>
+            <td>HTML5-100%</td>
+            <td>HTML5-150%</td>
+            <td>HTML5-200%</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
