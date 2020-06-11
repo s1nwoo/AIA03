@@ -1,4 +1,20 @@
-h1 {
-            color: red;
-            background-color:blanchedalmond;
+    #main {
+        background: white;
+        margin: 40px 100px;
+        padding: 10px 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 0px 10px gray;
+        );
+    }
+
+    nav {
+        overflow: hidden;
+    }
+
+    nav > ul.menu {
+        font-size:
+    }
+
+    nav > div.search {
+        float: right;
     }

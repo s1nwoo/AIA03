@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>[실습]레이아웃 만들기</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    
+    #however{
+          background: white;
+            margin: 40px 0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 0px 10px rgba(80, 80, 80, 0.5);
+    }
+    
+    .font {
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: 30px;
+    }
+
+    .blue {
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: 30px;
+
+    }
+
+    #title {
+        margin: 30px;
+    }
+
+    .textbox {
+        position: relative
+    }
+
+
+    [type="text"] {
+        font-family: inherit;
+        width: 100px;
+        height: 20px;
+        margin: 0;
+        padding: 2px;
+        border: 1px solid gray;
+        border-radius: 10px 0 0 10px;
+    }
+
+    [type="submit"] {
+        width: 50px;
+        margin: -1px;
+        padding: 3px;
+        border: 1px solid gray;
+        border-radius: 0 10px 10px 0;
+    }
+
+    #main {
+        margin: 40px;
+        padding:
+    }
+
+
+    #search {
+        position: absolute;
+        right: 30px;
+        top: 104px;
+    }
+
+    #first {
+        font-size: 2em;
+        position: relative;
+        left: 300px;
+    }
+
+    #aside {
+        position: absolute;
+        right: 10px;
+        top: 200px;
+        width: 200px;
+    }
+
+    .catagory {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .post {
+        font-size: 12px;
+        color: gray;
+    }
+</style>
+
+<body>
+
+    <div id="however">
+        <div id="title" style="line-height: 50%">
+            <h1>피지컬갤러리 따라하기</h1>
+            <p style="font-size: 12px">with 김계란님</p>
+        </div>
+
+        <hr>
+        <div> 부위별 운동법&emsp;스트레칭&emsp;재활운동</div>
+        <form id="search">
+            <input type=text><input type=submit value="검색"></form>
+        <hr>
+
+        <br>
+        <div id="main">
+            <h3 style="line-height: 0%">벤치프레스 운동방법</h3>
+            <p style="font-size: 12px">2020년 06월 10일</p>
+
+            <img src="../images/%EB%B2%A4%EC%B9%98.jpg">
+            <div id="first" class="font" style="font-size: 80px;"> 시작 자세 </div>
+            <br>
+
+            <div>
+                <p class="font">1. 바벨이 턱 바로 위에 위치하도록 벤치에 눕는다.</p>
+                <p class="font" style="display: inline-block">2. 가슴을 최대한 펴준 상태로 날개뼈를 벤치 안으로 모아준다고 상상하면서 바벨을 어깨보다 조금 넓게 잡아준다.</p>
+                <br>
+                <p class="font" style="display: inline-block">3. 이때 발은 엉덩이 쪽으로 당겨준 다음,</p>
+                <p class="font" style="color: cornflowerblue; display: inline-block">바닥에 단단히 고정시킨다.</p>
+            </div>
+
+            <img src="../images/%EB%B2%A4%EC%B9%982.JPG">
+            <div id="first" class="font" style="font-size: 80px;"> 운동법 </div>
+            <br>
+
+            <div>
+                <p class="font" style="display: inline-block">1. 등이 최대한 젖혀지게 벤치에 누운다음,</p>
+                <p class="font" style="color: cornflowerblue; display: inline-block">(허리가 아닌 등을 젖힐 것).</p>
+                <br>
+                <p class="font" style="color: cornflowerblue; display: inline-block">2. 바벨을 구부려 준다고 상상하며,</p>
+                <p class="font" style="display: inline-block">당기는 느낌으로 내려준다."</p>
+                <p class="font" style="color: red; display: inline-block">(숨을 들이쉬며)</p>
+            </div>
+
+
+
+            <img src="../images/%EB%B2%A4%EC%B9%983.JPG">
+            <br>
+            <div>
+                <p class="font" style="display: inline-block">3.</p>
+                <p class="font" style="color: red; display: inline-block">숨을 내쉬면서, </p>
+                <p class="font" style="display: inline-block"> 가슴을 내밀어준다는 느낌에 최대한 집중하면서 바벨을 밀어준다.</p>
+                <p class="font">4. 다시 숨을 들이쉬면서, 바벨을 당기는 느낌으로 내려주는 걸 반복한다.</p>
+            </div>
+        </div>
+
+
+        <aside id="aside">
+            <div>
+                <h3>카테고리</h3>
+                <ul class="catagory">
+                    <li>다이어트</li>
+                    <li>식단 정보</li>
+                    <li>영양 정보</li>
+                </ul>
+            </div>
+            <div>
+                <h3>최근 읽은 글</h3>
+                <ul class="post">
+                    <li>벤치프레스 운동법</li>
+                    <li>데드리프트 운동법</li>
+                    <li>스쿼트 운동법</li>
+                    <li>무릎 통증 스트레칭</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+
+</body>
+
+</html>
