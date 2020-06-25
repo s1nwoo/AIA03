@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Swiper demo - autoplay</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
     <!-- 글꼴 -->
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Nova+Slim&display=swap"
         rel="stylesheet">
@@ -14,147 +14,14 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
-        @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
-        figure.snip1384 {
-            float: left;
-            font-family: 'Raleway', Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
-            margin: 20px;
-            min-width: 230px;
-            max-width: 315px;
-            width: 100%;
-            color: #ffffff;
-            text-align: left;
-            font-size: 14px;
-            background-color: #000000;
-        }
-
-        figure.snip1384 * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-transition: all 0.35s ease;
-            transition: all 0.35s ease;
-        }
-
-        figure.snip1384 img {
-
-            float: left;
-            width: 100%;
-            backface-visibility: hidden;
-            vertical-align: top;
-        }
-
-        figure.snip1384:after,
-        figure.snip1384 figcaption {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        figure.snip1384:after {
-            content: '';
-            background-color: rgba(0, 0, 0, 0.65);
-            -webkit-transition: all 0.35s ease;
-            transition: all 0.35s ease;
-            opacity: 0;
-        }
-
-        figure.snip1384 figcaption {
-            z-index: 1;
-            padding: 40px;
-        }
-
-        figure.snip1384 h3,
-        figure.snip1384 .links {
-            width: 100%;
-            margin: 5px 0;
-            padding: 0;
-        }
-
-        figure.snip1384 h3 {
-            line-height: 1.1em;
-            font-weight: 700;
-            font-size: 1.4em;
-            text-transform: uppercase;
-            opacity: 0;
-        }
-
-        figure.snip1384 p {
-            font-size: 0.8em;
-            font-weight: 300;
-            letter-spacing: 1px;
-            opacity: 0;
-            top: 50%;
-            -webkit-transform: translateY(40px);
-            transform: translateY(40px);
-        }
-
-        figure.snip1384 i {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            padding: 20px 25px;
-            font-size: 34px;
-            opacity: 0;
-            -webkit-transform: translateX(-10px);
-            transform: translateX(-10px);
-        }
-
-        figure.snip1384 a {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
-        }
-
-        figure.snip1384:hover img,
-        figure.snip1384.hover img {
-            zoom: 1;
-            filter: alpha(opacity=50);
-            -webkit-opacity: 0.5;
-            opacity: 0.5;
-        }
-
-        figure.snip1384:hover:after,
-        figure.snip1384.hover:after {
-            opacity: 1;
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-        }
-
-        figure.snip1384:hover h3,
-        figure.snip1384.hover h3,
-        figure.snip1384:hover p,
-        figure.snip1384.hover p,
-        figure.snip1384:hover i,
-        figure.snip1384.hover i {
-            -webkit-transform: translate(0px, 0px);
-            transform: translate(0px, 0px);
-            opacity: 1;
-        }
-
+        
         html,
         body {
             position: relative;
             height: 100%;
 
 
-        }
-
-        .content1_p {
-            font-size: 30px;
-            font-family: 'Nanum Gothic', sans-serif;
-            /* font-family: 'Nova Slim', cursive; */
         }
 
         body {
@@ -197,43 +64,42 @@
         #header {
             width: 1000px;
             margin-left: 445px;
-            margin: 0 auto;
+            /* margin: 0 auto; */
             padding: 20px;
-            margin-bottom: 20px;
-            border: 3px solid red;
+            /* margin-bottom: 20px; */
+            /* border: 3px solid red; */
         }
 
 
 
         #aside {
-            height: 200px;
-            float: right;
-            width: 100px;
+            /* height: 200px; */
+            position: relative;
+            float: left;
+            width: 200px;
             border: 3px solid red;
         }
 
         #content1 {
             margin-top: 20px;
             margin-bottom: 20px;
-            width: 1070px;
-            height: 350px;
+            width: 1000px;
+            height: 250px;
             margin-right: 20px;
             margin-left: 450px;
             text-align: center;
             border: 3px solid red;
         }
 
-        .best1,
-        .best2,
-        .best3 {
+        .best1, .best2, .best3{
             margin: 10px;
         }
 
 
 
         #content2 {
-            width: 1070px;
-            height: 230px;
+            width: 1000px;
+            height: 250px;
             float: left;
             margin-right: 20px;
             margin-left: 450px;
@@ -242,7 +108,6 @@
         }
 
         #footer {
-            position: relative;
             height: 200px;
             clear: both;
             padding: 20px;
@@ -279,28 +144,28 @@
         }
 
         .btn_store {
+            border: 1px solid black;
             margin-top: 50px;
             margin-right: 60px;
-            border: 0;
+            /* border: 0; */
             font-size: 16px;
             background-color: white;
             font-family: 'Nanum Gothic', sans-serif;
         }
 
         .btn_takeout {
+            border: 1px solid black;
             background-color: white;
             margin-left: 60px;
-            border: 0;
+            /* border: 0; */
             font-size: 16px;
             font-family: 'Nanum Gothic', sans-serif;
         }
 
-        .over {
-            /* margin: -3px; */
-            border: 3px solid #FF4E50;
-        }
-
         #top {
+            /* text-decoration: underline;
+            text-underline-position: under;
+            position: absolute; */
             font-size: 20px;
             width: 80px;
             height: 50px;
@@ -309,41 +174,14 @@
         }
 
         #logo {
-            width: 200px;
-            height: 130px;
+            width: 150px;
+            height: 100px;
         }
-
     </style>
-
-    <script>
-
-        $(document).ready(function () {
-
-            $('.btn_store',).hover(function(){
-                $(this).addClass('over');
-            },function(){
-                $(this).removeClass('over');
-            });
-
-            $('.btn_takeout',).hover(function(){
-                $(this).addClass('over');
-            },function(){
-                $(this).removeClass('over');
-            });
-
-
-            /* Demo purposes only */
-            $(".hover").mouseleave(function () {
-                    $(this).removeClass("hover");
-                });
-
-        });
-
-    </script>
-
 </head>
 
 <body>
+
     <!-- 최상단 header -->
     <header id="header">
         <a href="file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/javameger_main.html">
@@ -369,45 +207,20 @@
 
 
     <div id="content1">
-        <p class="content1_p">BEST MENU TOP 3</p>
-        <figure class="snip1384">
-            <img src="image/베스트메뉴1.png" alt="sample83" />
-            <figcaption>
-                <h3>Big® Mac</h3>
-                <p>100% 순 쇠고기 패티 두 장에 빅맥®만의 특별한 소스.
-                    입안에서 살살 녹는 치즈와 신선한 양상추, 양파, 그리고 피클까지.
-                    50년 넘게 전 세계인의 입맛을 사로 잡은 버거의 대명사.</p><i class="ion-ios-arrow-right"></i>
-            </figcaption>
-            <a href="#"></a>
-        </figure>
-        <figure class="snip1384"><img src="image/베스트메뉴2.png" alt="sample66" />
-            <figcaption>
-                <h3>McSpicy® Shanghai Burger</h3>
-                <p>매콤한 시즈닝을 입힌 100% 닭가슴 통살 위에
-                    아삭아삭한 양상추와 신선한 토마토~
-                    겉은 바삭, 속은 부드러운 치킨 패티의 매콤함으로
-                    입맛도 기분도 화끈하게!</p><i class="ion-ios-arrow-right"></i>
-            </figcaption>
-            <a href="#"></a>
-        </figure>
-        <figure class="snip1384"><img src="image/베스트메뉴3.png" alt="sample92" />
-            <figcaption>
-                <h3>Triple Cheeseburger</h3>
-                <p>부드러운 치즈와 풍부한 육즙의 패티를
-                    세배 더 진하게 즐길 수 있는 트리플 치즈버거 </p><i class="ion-ios-arrow-right"></i>
-            </figcaption>
-            <a href="#"></a>
-        </figure>
+
+        <img src="image/베스트메뉴1.png" class="best1">
+        <img src="image/베스트메뉴2.png" class="best2">
+        <img src="image/베스트메뉴3.png" class="best3">
 
     </div>
-    <hr>
     <!-- 주문창 -->
     <div id="content2">
         <button class="btn_store"">
-            <a href=" file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main1.html"><img
-                src="image/hamburger.png" height="100"></a><br><br>매장에서 식사</button>
+            <a href=" file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main.html"><img
+                src="image/hamburger.png" height="100"></a>
+            <br><br>매장에서 식사</button>
         <button class="btn_takeout">
-            <a href="file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main1.html"><img
+            <a href="file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main.html"><img
                     src="image/take-away.png" height="100"></a>
             <br><br>테이크 아웃</button>
     </div>
@@ -493,7 +306,7 @@
                 prevEl: '.swiper-button-prev',
             },
         });
-
+ 
 
     </script>
 </body>
