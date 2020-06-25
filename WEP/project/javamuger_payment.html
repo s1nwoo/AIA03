@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javamurger_payment</title>
+
+    <style>
+        @media(max-width: 300px) {}
+
+        #pay_container {
+            width: 300px;
+            height: 700px;
+            border: 1px solid red;
+            margin: 10px auto;
+            padding: 20px;
+        }
+
+        #pay_header {
+            border: 1px solid red;
+            width: 300px;
+            height: 120px;
+        }
+
+        #pay_content {
+            border: 1px solid red;
+            padding: 20px;
+            width: 260px;
+            margin-top: 20px;
+        }
+
+        #pay_btn {
+            border: 1px solid red;
+            width: 260px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        #pay_sum {
+            border: 1px solid red;
+            width: 260px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        #pay_way {
+            border: 1px solid red;
+            width: 260px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        #logo {
+            width: 150px;
+            height: 100;
+            float: right;
+        }
+
+        #pay_header_p1 {
+            display: inline;
+            position: absolute;
+            margin: 20px;
+            font-size: 40px;
+
+        }
+
+        #pay_header_p2 {
+            position: absolute;
+            margin: 20px;
+            margin-top: 80px;
+            font-size: 20px;
+        }
+
+        #pay_btn_addmenu {
+            margin-left: 10px;
+            width: 100px;
+            height: 50px;
+        }
+
+        #pay_btn_cancel {
+            margin-left: 35px;
+            width: 100px;
+            height: 50px;
+        }
+
+        #pay_sum_table {
+            width: 250px;
+            border: 1px solid red;
+        }
+
+        #pay_way_p {
+            color: red;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #pay_way_money {
+            float: left;
+            margin-left: 15px;
+            width: 60px;
+            height: 60px;
+        }
+
+        #pay_way_card {
+            margin-left: 25px;
+            width: 60px;
+            height: 60px;
+        }
+
+        #pay_way_qrcode {
+            margin-right: 15px;
+            float: right;
+            width: 60px;
+            height: 60px;
+        }
+
+        #pay_way_btnmoney{
+            float: left;
+            margin-left: 15px;
+            width: 60px;
+        }
+
+        #pay_way_btncard{
+            margin-left: 25px;
+            width: 60px;
+        }
+
+        #pay_way_btnqrcode{
+            margin-right: 15px;
+            float: right;
+            width: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="pay_container">
+        <div id="pay_header">
+            <p id="pay_header_p1">결제</p>
+            <img src="HTML Project images/LogoSample5.jpg" id="logo">
+            <p id="pay_header_p2">주문내역을 확인해주세요.</p>
+        </div>
+
+        <div id="pay_content">
+            <hr>
+            <hr>
+        </div>
+        <div id="pay_btn">
+            <button id="pay_btn_addmenu">메뉴 추가하기</button>
+            <button id="pay_btn_cancel">전체 취소하기</button>
+        </div>
+        <div id="pay_sum">
+            <table id="pay_sum_table">
+                <tr>
+                    <td>총 주문 수량:</td>
+                    <td>값</td>
+                </tr>
+                <tr>
+                    <td>총 주문 금액:</td>
+                    <td>값</td>
+                </tr>
+            </table>
+        </div>
+        <div id="pay_way">
+            <p id="pay_way_p">결제수단을 선택하세요</p>
+            <div id="pay_way_img">
+                <img src="image/돈.jpg" id="pay_way_money">
+                <img src="image/카드.jpg" id="pay_way_card">
+                <img src="image/qr코드.png" id="pay_way_qrcode">
+            </div>
+            <div>
+                <button id="pay_way_btnmoney">현금</button>
+                <button id="pay_way_btncard">카드</button>
+                <button id="pay_way_btnqrcode">qr코드</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
