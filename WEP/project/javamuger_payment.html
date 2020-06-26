@@ -7,15 +7,17 @@
     <title>Javamurger_payment</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!-- 글꼴 -->
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400&family=Nova+Slim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400&family=Nova+Slim&display=swap"
+        rel="stylesheet">
     <style>
         @media(max-width: 300px) {}
-        *{  
+
+        * {
             font-family: 'Nanum Gothic', sans-serif;
-            color: #3f3f3f; 
-            font-weight: bolder; 
-             /* border: 1px solid red;  */
-        } 
+            color: #3f3f3f;
+            font-weight: bolder;
+            /* border: 1px solid red;  */
+        }
 
         #pay_container {
             width: 300px;
@@ -33,30 +35,30 @@
         #pay_content {
             padding: 20px;
             width: 260px;
-            margin-top: 10px; 
+            margin-top: 10px;
         }
 
         #pay_btn {
             width: 260px;
-            height: 10px; 
+            height: 10px;
             padding: 20px;
-            text-align: center; 
-            display: table-cell; 
+            text-align: center;
+            display: table-cell;
             vertical-align: middle;
             padding-top: 5px;
             padding-bottom: 5px;
         }
 
-        #pay_btn button{
+        #pay_btn button {
             border: 0;
             font-weight: bold;
-            color: #3f3f3f; 
-            border-radius: 15px ;
+            color: #3f3f3f;
+            border-radius: 15px;
         }
 
-        #pay_btn button:hover{
-            color:white;
-            background-color: #FF4E50; 
+        #pay_btn button:hover {
+            color: white;
+            background-color: #FF4E50;
         }
 
         #pay_sum {
@@ -88,7 +90,7 @@
             margin: 20px;
             font-size: 40px;
             font-weight: bold;
-            color : #FF4E50;
+            color: #FF4E50;
 
         }
 
@@ -103,9 +105,9 @@
             margin-left: -4px;
             width: 100px;
             height: 40px;
-            background-color: #FF4E50; 
-            color : rgb(163, 140, 140);
-            }
+            background-color: #FF4E50;
+            color: rgb(163, 140, 140);
+        }
 
         #pay_btn_cancel {
             margin-left: -3px;
@@ -122,21 +124,21 @@
         #pay_way_p {
             color: #FF4E50;
             font-size: 22px;
-            text-align: center; 
+            text-align: center;
             margin-top: 10px;
-        
+
         }
 
-        #pay_way button{
-            border : none; 
+        #pay_way button {
+            border: none;
             border-radius: 10px;
-            color: #3f3f3f; 
-   
+            color: #3f3f3f;
+
         }
 
-        #pay_way button:hover{
-            color:white;
-            background-color: #FF4E50; 
+        #pay_way button:hover {
+            color: white;
+            background-color: #FF4E50;
         }
 
         #pay_way_money {
@@ -159,30 +161,109 @@
             height: 60px;
         }
 
-        #pay_way_btnmoney{
+        #pay_way_btnmoney {
             float: left;
             margin-left: 15px;
             width: 60px;
         }
 
-        #pay_way_btncard{
+        #pay_way_btncard {
             margin-left: 25px;
             width: 60px;
         }
 
-        #pay_way_btnqrcode{
+        #pay_way_btnqrcode {
             margin-right: 15px;
             float: right;
             width: 60px;
         }
+
+        #table {
+            width: 250px;
+            display: table;
+        }
+
+        .row {
+            display: table-row;
+            margin-right: 80px;
+        }
+
+        h4 {
+            margin-right: 40px;
+            display: table-cell;
+            /* border:solid 1px gray; padding: 3px; */
+        }
+
+
+        #total {
+            position: relative;
+            left: 80px;
+            font-size: 18px;
+        }
+
     </style>
 
     <script>
 
-        $(document).ready(function(){
 
-            $('#pay_content').append(each(Hamburger));
-        });
+        function _GET(search) {
+            var obj = {};
+            var uri = decodeURI(search);
+            uri = uri.slice(1, uri.length);
+
+            var param = uri.split('&');
+
+            for (var i = 0; i < param.length; i++) {
+                var devide = param[i].split('=');
+                obj[devide[0]] = devide[1];
+            }
+
+            return obj;
+        }
+
+        window.onload = function () {
+            var search = window.location.search;
+            var getData = _GET(search);
+            // var sender = document.querySelector('#sender');
+
+            // sender.value = getData.val;
+
+            //  alert(getData.val);
+
+            var orderList = JSON.parse(getData.val);
+
+            var html = '';
+            html += '<div id ="table"><div class="row">';
+            // html += '<h4>이미지</h4>';
+            html += '<h4>제품명</h4>';
+            html += '<h4>가격</h4>';
+            html += '<h4>수량</h4>';
+            html += '</div>';
+            html += '<br>'
+            // html += '<div class="list">';
+            for (var i = 0; i < orderList.length; i++) {
+                html += '<div class="row">'
+                // html += '<h4><img src="' + Item[orderList[i].idx].img + '" id="orderImg"></h4>';
+                html += '<h4>' + orderList[i].name + '</h4>';
+                html += '<h4>' + orderList[i].price * orderList[i].cnt + '</h4>';
+                html += '<h4 class="' + orderList[i].idx + '">' + orderList[i].cnt + '</h4>';
+                // html += '<button class="' + orderList[i].idx + '" id="add">+</button>';
+                // html += '<button class="' + orderList[i].idx + '" id="minus">-</button>';
+                html += '</div>'
+            }
+            html += '</div>';
+
+            $('#pay_content').html(html);
+
+
+            var total = 0;
+            for (var i = 0; i < orderList.length; i++) {
+                total += orderList[i].price * orderList[i].cnt;
+            }
+            var totalHtml = '<span id="total">' + '총액 :' + total + '원</span>';
+            $('#pay_sum').html(totalHtml);
+        }
+        
 
     </script>
 
@@ -198,7 +279,7 @@
         </div>
 
         <div id="pay_content">
-            <hr>    
+            <hr>
             <hr>
         </div>
         <div id="pay_btn">
@@ -206,16 +287,7 @@
             <button id="pay_btn_cancel">전체 취소하기</button>
         </div>
         <div id="pay_sum">
-            <table id="pay_sum_table">
-                <tr>
-                    <td>총 주문 수량:</td>
-                    <td>값</td>
-                </tr>
-                <tr>
-                    <td>총 주문 금액:</td>
-                    <td>값</td>
-                </tr>
-            </table>
+
         </div>
         <div id="pay_way">
             <p id="pay_way_p">결제수단을 선택하세요</p>

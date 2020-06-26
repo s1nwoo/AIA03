@@ -256,7 +256,7 @@
                 var totalHtml = '<span id="total"></span>';
 
                 $('#cart').html(html);
-                
+
                 var total = 0;
                 for (var i = 0; i < orderList.length; i++) {
                     total += orderList[i].price * orderList[i].cnt;
@@ -268,8 +268,8 @@
             });
 
 
-  
-            $(document).on("click","#addplz",function(event){
+
+            $(document).on("click", "#addplz", function (event) {
                 orderList[0].cnt++;
             })
 
@@ -289,7 +289,7 @@
 
             }
 
-            
+
             $('#orderCancle').click(function () {
                 $(function () {
                     orderList = [];
@@ -409,16 +409,18 @@
                 $('html').scrollTop(0);
             });
 
-
-
-
-
-
-
         });
     </script>
+
+    <script>
+        function pay_popup() {
+            window.open("file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/javamuger_payment.html", "a", "width=360, height=546, left=100, top=50");
+        }
+
+    </script>
+
+
     <style>
-        
         img.list {
             width: 300px;
             height: 150px;
@@ -600,11 +602,11 @@
     <div>
         <h3>주문 리스트</h3>
     </div>
-        <div id="cart">
+    <div id="cart">
 
-        </div>
-        <div id="orderCancle"><input type="reset" value="모두 취소"></div>
-        <div id="orderComple"><input type="submit" value="선택 완료"></div>
+    </div>
+    <div id="orderCancle"><input type="reset" value="모두 취소"></div>
+    <div id="orderComple"><input type="submit" value="선택 완료" onclick="pay_popup()"></div>
 </aside>
 <footer id="footer">
 

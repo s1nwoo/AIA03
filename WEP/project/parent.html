@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+    var newWindow;
+    function openNewWindow(){
+        var data = document.querySelector('#sendValue').value;
+        window.open("son.html?val="+data , "newWindow", "width=300, height=400, scrollbar=no");
+    }
+    
+</script>
+</head>
+<body>
+<input type="button" value="자식창 열기" onclick="openNewWindow()">
+<input type='text' id='sendValue'/>
+</body>
+</html>
+

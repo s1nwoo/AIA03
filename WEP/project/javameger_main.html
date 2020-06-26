@@ -197,19 +197,19 @@
         #header {
             width: 1000px;
             margin-left: 445px;
-            margin: 0 auto;
+            /* margin: 0 auto; */
             padding: 20px;
-            margin-bottom: 20px;
-            border: 3px solid red;
+            /* margin-bottom: 20px; */
+            /* border: 3px solid red; */
         }
 
 
 
         #aside {
             height: 200px;
-            float: right;
-            width: 100px;
-            border: 3px solid red;
+            position: static;
+            float: left;
+            width: 200px;
         }
 
         #content1 {
@@ -220,7 +220,7 @@
             margin-right: 20px;
             margin-left: 450px;
             text-align: center;
-            border: 3px solid red;
+            /* border: 3px solid red; */
         }
 
         .best1,
@@ -238,8 +238,8 @@
             margin-right: 20px;
             margin-left: 450px;
             text-align: center;
-            border: 3px solid red;
         }
+
 
         #footer {
             position: relative;
@@ -278,21 +278,42 @@
             float: left;
         }
 
+        #content2 button {
+            background-color: whitesmoke;
+            border-radius: 20px;
+            width: 400px;
+            height: 150px;
+        }
+
+        #content2 button:hover {
+            background-color: #F9D423;
+        }
+
         .btn_store {
+            border: none;
             margin-top: 50px;
             margin-right: 60px;
-            border: 0;
-            font-size: 16px;
+            font-size: 45px;
             background-color: white;
             font-family: 'Nanum Gothic', sans-serif;
         }
 
         .btn_takeout {
+            border: none;
             background-color: white;
             margin-left: 60px;
-            border: 0;
-            font-size: 16px;
+            font-size: 45px;
             font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        #btn_store_span {
+            position: relative;
+            bottom: 10px;
+        }
+
+        #btn_takeout_span {
+            position: relative;
+            bottom: 10px;
         }
 
         .over {
@@ -312,30 +333,29 @@
             width: 200px;
             height: 130px;
         }
-
     </style>
 
     <script>
 
         $(document).ready(function () {
 
-            $('.btn_store',).hover(function(){
+            $('.btn_store',).hover(function () {
                 $(this).addClass('over');
-            },function(){
+            }, function () {
                 $(this).removeClass('over');
             });
 
-            $('.btn_takeout',).hover(function(){
+            $('.btn_takeout',).hover(function () {
                 $(this).addClass('over');
-            },function(){
+            }, function () {
                 $(this).removeClass('over');
             });
 
 
             /* Demo purposes only */
             $(".hover").mouseleave(function () {
-                    $(this).removeClass("hover");
-                });
+                $(this).removeClass("hover");
+            });
 
         });
 
@@ -346,7 +366,7 @@
 <body>
     <!-- 최상단 header -->
     <header id="header">
-        <a href="file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/javameger_main.html">
+        <a href="javameger_main.html">
             <img src="HTML Project images/LogoSample5.jpg" id="logo"></a>
     </header>
 
@@ -403,13 +423,12 @@
     <hr>
     <!-- 주문창 -->
     <div id="content2">
-        <button class="btn_store"">
-            <a href=" file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main1.html"><img
-                src="image/hamburger.png" height="100"></a><br><br>매장에서 식사</button>
-        <button class="btn_takeout">
-            <a href="file:///C:/Users/a4-01/Documents/GitHub/AIA03/WEP/project/Javamurger_kiosk_Main1.html"><img
-                    src="image/take-away.png" height="100"></a>
-            <br><br>테이크 아웃</button>
+        <a href="Javamurger_kiosk_Main.html">
+        <button class="btn_store">
+            <img src="image/forhereicon.png" width="60"><span id="btn_store_span"> 매장에서 식사</span></button></a>
+        <a href="Javamurger_kiosk_Main.html">
+            <button class="btn_takeout">
+                <img src="image/takeawayicon.png" width="60"><span id="btn_takeout_span"> 테이크 아웃</span></button></a>
     </div>
 
     <!-- 오른쪽 사이드창 -->
@@ -445,10 +464,10 @@
             </table>
             <table id="table2">
                 <tr>
-                    <td>(주)자바버거</td>
+                    <td>(주)자바머거</td>
                 </tr>
                 <tr>
-                    <td>대표이사: 이혜진</td>
+                    <td>대표이사: 정신우</td>
                 </tr>
                 <tr>
                     <td>사업자등록번호: 2020-06-26</td>
@@ -457,7 +476,7 @@
                     <td>전화주문: 02-722-1481</td>
                 </tr>
                 <tr>
-                    <td>COPYRIGHT © 2020 ALL RIGHTS RESERVED BY Java Burger</td>
+                    <td>COPYRIGHT © 2020 ALL RIGHTS RESERVED BY Java Murger</td>
                 </tr>
             </table>
         </div>
@@ -481,7 +500,7 @@
             spaceBetween: 30,
             centeredSlides: true,
             autoplay: {
-                delay: 2500,
+                delay: 1500,
                 disableOnInteraction: false,
             },
             pagination: {
