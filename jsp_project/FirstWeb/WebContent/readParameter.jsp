@@ -1,28 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
+    	
+    	<%--@ page errorPage = "/error/error.jsp" --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자의 요청정보 출력</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-	
-
-
-	<jsp:forward page="foward2.jsp"/>
-
-
-
-
-
-
-
-
+	name 파라미터 값: <%= request.getParameter("name").toUpperCase() %>
 
 </body>
 </html>

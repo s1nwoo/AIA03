@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
-    
-    	String name = (String) request.getAttribute("username");		
-    
-    %>
-    
+<%
+	String name = (String) request.getAttribute("username");
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	request.setAttribute("username", "scott");
-%>
+    
+<jsp:useBean id="memberInfo" class="model.LoginInfo" scope="session"/>
 
-<jsp:forward page="foward.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,5 +11,12 @@
 </head>
 <body>
 
+	<%
+		memberInfo.setUid("hot");
+		memberInfo.setName("뜨거워");
+		
+	%>
+
+	<h1><%= memberInfo %></h1>
 </body>
 </html>
