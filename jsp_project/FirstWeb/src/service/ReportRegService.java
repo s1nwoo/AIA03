@@ -3,6 +3,7 @@ package service;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,10 +38,11 @@ public class ReportRegService {
 		String sname = "";
 		String sno = "";
 		String filePath = "";
-
-		Connection conn = null;
 		
+		Connection conn = null;
+
 		try {
+			
 			boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 	
 			if (isMultipart) {
@@ -64,7 +66,7 @@ public class ReportRegService {
 						String paramValue = item.getString("utf-8");
 						//System.out.println(paramName + " = " + paramValue);
 						
-						if(paramName.equals("sname")){
+						if(paramName.equals("uname")){
 							sname = paramValue;
 						} else if(paramName.equals("sno")) {
 							sno = paramValue;
@@ -121,6 +123,8 @@ public class ReportRegService {
 				
 				resultCnt = dao.insertReport(conn, report);
 				
+				request.setAttribute("report", report);
+				
 				
 	
 			}
@@ -134,6 +138,15 @@ public class ReportRegService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			
 		}
 		
