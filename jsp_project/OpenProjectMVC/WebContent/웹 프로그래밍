@@ -29,7 +29,12 @@
 2. 회원 데이터 처리(가입처리)
 	Service, dao(insert), view
 
+3. 아이디체크
+	Service, dao(select), view(html X-> text) y | n
 
+회원리스트
+
+Service -> Dao -> ListView -> view
 
 
 

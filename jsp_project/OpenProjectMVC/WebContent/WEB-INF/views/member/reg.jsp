@@ -28,8 +28,9 @@
 			${member}
 		</c:if>
 		
-		<c:if test="${not (result gt 0 && member ne null)}">
-			회원가입 실패했슴다
+		<c:if test="${not(result gt 0 && member ne null)}">
+			회원가입 실패
+			${member}
 		</c:if>
 		
 		

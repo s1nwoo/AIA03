@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-
 * {
-	
 	margin: 0;
 	padding: 0;
 }
@@ -48,6 +46,7 @@ table.table td {
 	padding : 5px;
 }
 
-input[type=text], input[type=password] {
-	padding : 5px;
+input[type=text], input[type=password], input[type=email] {
+	padding : 3px;
 }
+

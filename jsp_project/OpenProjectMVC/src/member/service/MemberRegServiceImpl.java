@@ -22,7 +22,7 @@ import service.Service;
 
 public class MemberRegServiceImpl implements Service {
 
-	MemberDao dao;
+MemberDao dao;
 	
 	@Override
 	public String getViewPage(
@@ -78,7 +78,7 @@ public class MemberRegServiceImpl implements Service {
 					} else { // type=file
 						
 						// 서버 내부의 경로
-						String uri = "/upload/users";
+						String uri = "/upload/user";
 	
 						//String uri = request.getSession().getServletContext().getInitParameter("uploadPath");
 	
@@ -141,17 +141,8 @@ public class MemberRegServiceImpl implements Service {
 					e.printStackTrace();
 				}
 			}
-			
 		}
 		
 		return "/WEB-INF/views/member/reg.jsp";
 	}
-
 }
-
-
-
-
-
-
-

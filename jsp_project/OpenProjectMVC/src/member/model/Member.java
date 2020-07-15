@@ -4,14 +4,13 @@ import java.sql.Date;
 
 public class Member {
 
-	
 	private int idx;
 	private String uid;
 	private String upw;
 	private String uname;
 	private String uphoto;
 	private Date regdate;
-	
+
 	public Member(int idx, String uid, String upw, String uname, String uphoto, Date regdate) {
 		this.idx = idx;
 		this.uid = uid;
@@ -71,10 +70,9 @@ public class Member {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
-	// java.sql.Date -> java.
-	public java.util.Date getToDate(){// ${member.toDate}
-		
+
+	// java.sql.Date -> java.util.Date
+	public java.util.Date getToDate() {// ${member.toDate}
 		return new java.util.Date(regdate.getTime());
 	}
 
@@ -83,9 +81,5 @@ public class Member {
 		return "Member [idx=" + idx + ", uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", uphoto=" + uphoto
 				+ ", regdate=" + regdate + "]";
 	}
-	
-	
-	
-	
-	
+
 }
