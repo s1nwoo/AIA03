@@ -40,9 +40,10 @@ public class DBCPInit extends HttpServlet {
 		try {
 			
 			//String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:orcl";
-			String jdbcDriver = "jdbc:mysql://localhost:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+			// String jdbcDriver = "jdbc:mysql://localhost:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
+			String jdbcDriver = "jdbc:mysql://admin.cgphlm9vynbq.ap-northeast-2.rds.amazonaws.com:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC";
 			String username = "bit";
-			String pw = "bit";
+			String pw = "wjd134dn";
 			
 			
 			//커넥션풀이 새로운 커넥션을 생성할 때 사용할 커넥션팩토리를 생성.

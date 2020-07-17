@@ -25,7 +25,7 @@ public class MemberDao {
 		int resultCnt = 0;
 
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO member (uid, upw, uname, uphoto ) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO project.member (uid, upw, uname, uphoto ) VALUES (?,?,?,?)";
 
 		try {
 
@@ -54,7 +54,7 @@ public class MemberDao {
 		ResultSet rs;
 
 		try {
-			String sql = "select count(*) from member where uid=?";
+			String sql = "select count(*) from project.member where uid=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 
@@ -80,7 +80,7 @@ public class MemberDao {
 		
 		try {
 			stmt=conn.createStatement();
-			String sql = "select count(*) from member";
+			String sql = "select count(*) from project.member";
 			
 			rs=stmt.executeQuery(sql);
 			
@@ -107,7 +107,7 @@ public class MemberDao {
 		List<Member> list = new ArrayList<Member>();
 		
 		try {
-			String sql = "select * from member order by uname limit ?, 5";	// 시작점, 3개
+			String sql = "select * from project.member order by uname limit ?, 5";	// 시작점, 3개
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			
