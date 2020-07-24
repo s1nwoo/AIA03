@@ -58,6 +58,10 @@ public class FrontController extends HttpServlet {
 				Service service = (Service) serviceClass.newInstance();
 				
 				commands.put(command, service);
+				
+				// 요청경로 = 서비스 등록 확인
+				System.out.println("요청경로-서비스 확인용:"+command + "=" + service );
+				
 			} catch (ClassNotFoundException e) {
 				
 			} catch (InstantiationException e) {
@@ -82,6 +86,9 @@ public class FrontController extends HttpServlet {
     		type = command.substring(request.getContextPath().length());
     	}
     	
+    	// 요청경로 확인용출력
+    	System.out.println("요청 파악 : " + type);
+    	
     	
     	Service service = commands.get(type);
     	
@@ -95,7 +102,6 @@ public class FrontController extends HttpServlet {
     	// 근데 sendRedirect를 사용할 곳이 있을까 싶어서 일단 forward 작업만 했습니다.
     	RequestDispatcher dispatcher = request.getRequestDispatcher(page);
     	dispatcher.forward(request, response);
-    	
     }
 
 	/**

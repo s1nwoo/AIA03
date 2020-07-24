@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="<c:url value="/css/default.css" />">
 
 <style>
+
 </style>
 </head>
 <body>
@@ -28,9 +29,8 @@
 			${member}
 		</c:if>
 		
-		<c:if test="${not(result gt 0 && member ne null)}">
+		<c:if test="${not (result gt 0 && member ne null)}">
 			회원가입 실패
-			${member}
 		</c:if>
 		
 		
@@ -41,3 +41,12 @@
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

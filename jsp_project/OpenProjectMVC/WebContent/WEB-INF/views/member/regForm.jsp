@@ -19,7 +19,7 @@
 		color : red;
 	}
 	#idchk {
-		
+		display: none;
 	}
 </style>
 </head>
@@ -125,3 +125,12 @@
 	
 	
 </script>
+
+
+
+
+
+
+
+
+

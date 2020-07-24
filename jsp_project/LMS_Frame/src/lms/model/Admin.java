@@ -4,21 +4,21 @@ package lms.model;
 //자신이 사용할 Dao/Model/Service resurve 파일 번호를 항상 공유해주세용!
 public class Admin {
 
-	private String id;
+	private int id;
 	private String pw;
 	
 	public Admin() {}
 
-	public Admin(String id, String pw) {
+	public Admin(int id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

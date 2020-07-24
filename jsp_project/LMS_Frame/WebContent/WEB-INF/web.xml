@@ -2,8 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>LMS_Frame</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
   <!-- FrontController 등록 -->
@@ -46,5 +46,25 @@
   	<filter-name>CharacterEncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  
+  
+  <!-- 로그인 필터 설정 -->
+<filter>
+  	<filter-name>LoginFilter</filter-name>
+  	<filter-class>filter.LoginFilter</filter-class>
+  </filter>
+  <!-- 매핑을 통해 filter 서블릿을 적용할 경로를 설정합니다. -->
+ <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/login.do</url-pattern>  <!-- 박혜미 추가부분 200724 -->
+  </filter-mapping>
+  
+  
+  
+  
+  
+  
+  
 </web-app>
 

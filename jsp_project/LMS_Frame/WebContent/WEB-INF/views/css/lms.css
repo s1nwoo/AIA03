@@ -1,0 +1,80 @@
+
+#container {
+    margin: 10px auto;
+    padding: 10px;
+    border: 0px solid #999999;
+}
+#header {
+    padding: 1px;
+    margin-bottom: 0px;
+    border: 0px solid blue;
+}
+#headerLeft {
+    padding: 1px;
+    margin-bottom: 10px;
+    border: 0px solid red;
+}
+#headerRight {
+    padding: 1px;
+    margin-bottom: 10px;
+    border: 0px solid blue;
+}
+#leftMenu {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0px solid green;
+}
+#contents {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0px solid #999999;
+}
+#contentsAll {
+    clear: both;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 0px solid #999999;
+}
+#footer {
+    padding: 10px;
+    border: 0px solid #999999;
+}
+
+
+/* 481 */
+@media ( min-width: 700px ) {
+    #container {
+    width: 800px;
+    }
+    #headerLeft {
+    width: 500px;
+    float: left;
+    }
+    #headerRight {    
+    float: right;
+    }    
+    #leftMenu {
+    width: 220px;
+    float: left;
+    }
+    #contents {
+    width: 520px;
+    float: right;
+    }
+    #footer {
+    clear: both;
+    }
+}
+
+
+
+
+.btnStyle {            
+    border-radius: 10px;
+    font-size:14px;
+    color: white;
+    font-weight : 900;
+    background-color: rgba(0, 0, 255, 0.7);
+    border-color:  rgba(0, 0, 255, 1);            
+}
+

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <a id="send-to-btn" href="#" onclick="sendTo();">
-  <img src="//k.kakaocdn.net/14/dn/btqc6xrxbuT/7VJk7YSWITkz9K9pbXEffk/o.jpg" />
+  <button class="btnTmyPage" onClick="doShareKa()">ì¹´ì¹´ì˜¤í†¡ ê³µìœ í•˜ê¸°</button>
 </a>
 <script type="text/javascript">
-	// À¥ ÇÃ·§Æû µµ¸ŞÀÎ µî ÃÊ±âÈ­ÇÑ ¾ÛÀÇ ¼³Á¤ÀÌ ±×´ë·Î Àû¿ëµË´Ï´Ù.
-	// ÃÊ±âÈ­ÇÑ ¾Û¿¡ ÇöÀç µµ¸ŞÀÎÀÌ µî·ÏµÇÁö ¾ÊÀº °æ¿ì ¿¡·¯°¡ ¹ß»ıÇÕ´Ï´Ù.
+	// ì›¹ í”Œë«í¼ ë„ë©”ì¸ ë“± ì´ˆê¸°í™”í•œ ì•±ì˜ ì„¤ì •ì´ ê·¸ëŒ€ë¡œ ì ìš©ë©ë‹ˆë‹¤.
+	// ì´ˆê¸°í™”í•œ ì•±ì— í˜„ì¬ ë„ë©”ì¸ì´ ë“±ë¡ë˜ì§€ ì•Šì€ ê²½ìš° ì—ëŸ¬ê°€ ë°œìƒí•©ë‹ˆë‹¤.
     Kakao.init('28acda8ed9c06d820ed355f6085698ed');
 	function sendTo() {
-		// getAccessToken : ·Î±×ÀÎÀÌ µÇ¾îÀÖ´ÂÁö È®ÀÎÇÑ´Ù
+		// getAccessToken : ë¡œê·¸ì¸ì´ ë˜ì–´ìˆëŠ”ì§€ í™•ì¸í•œë‹¤
 		if(!Kakao.Auth.getAccessToken()){
-			// ·Î±×ÀÎ
+			// ë¡œê·¸ì¸
 			Kakao.Auth.login({
 				success: function() {
-					// API ¿äÃ»
+					// API ìš”ì²­
 					Kakao.API.request({
-						// ³ª¿¡°Ô º¸³»±â API ÁÖ¼Ò
+						// ë‚˜ì—ê²Œ ë³´ë‚´ê¸° API ì£¼ì†Œ
 						url: '/v2/api/talk/memo/send',
 						data: {
-							// Ä¿½ºÅÒ ÅÛÇÃ¸´ ¾ÆÀÌµğ
+							// ì»¤ìŠ¤í…€ í…œí”Œë¦¿ ì•„ì´ë””
 							template_id: 32861,
 							// templateArgs: {"title": "Kakao msg forwarded from the web","description": "AIA semi-final project"}
 						},
@@ -39,7 +39,7 @@
 		        	alert('failed to login: ' + JSON.stringify(err))},
 			})
 		}
-		// ·Î±×ÀÎÀÌ µÇ¾îÀÖÀ¸¸é ¸Ş¼¼Áö Àü¼ÛÀ¸·Î ³Ñ¾î°¨
+		// ë¡œê·¸ì¸ì´ ë˜ì–´ìˆìœ¼ë©´ ë©”ì„¸ì§€ ì „ì†¡ìœ¼ë¡œ ë„˜ì–´ê°
 		else{
 			Kakao.Auth.login({
 				scope: 'PROFILE,TALK_MESSAGE',

@@ -3,52 +3,67 @@ package member.model;
 import java.util.List;
 
 public class MemberListView {
-	
+
 	private int memberTotalCount;
-	private int currentPage;
+	private int currentPageNumber;
 	private List<Member> memberList;
-	private int countPerPage;
-	private int startRow;
 	private int pageTotalCount;
-	
-	public MemberListView(int memberTotalCount, int currentPage, List<Member> memberList, int countPerPage,
+	private int memberCountPerpage;
+	private int startRow;
+
+	public MemberListView(int memberTotalCount, int currentPageNumber, List<Member> memberList, int memberCountPerpage,
 			int startRow) {
 		this.memberTotalCount = memberTotalCount;
-		this.currentPage = currentPage;
+		this.currentPageNumber = currentPageNumber;
 		this.memberList = memberList;
-		this.countPerPage = countPerPage;
+		this.memberCountPerpage = memberCountPerpage;
 		this.startRow = startRow;
+		calTotalCount();
 	}
-	private void calTotalPageCount() {
-		if(memberTotalCount ==0) {
+
+	private void calTotalCount() {
+		if(memberTotalCount==0) {
 			pageTotalCount = 0;
 		} else {
-			pageTotalCount = memberTotalCount/countPerPage;
-			if(memberTotalCount%countPerPage>0) {
-				pageTotalCount++;
+			pageTotalCount = memberTotalCount/memberCountPerpage;
+			System.out.println(memberTotalCount%memberCountPerpage);
+			if(memberTotalCount%memberCountPerpage > 0) {
+				pageTotalCount ++;
 			}
+			System.out.println(pageTotalCount);
 		}
 	}
+
 	public int getMemberTotalCount() {
 		return memberTotalCount;
 	}
 
-	public int getCurrentPage() {
-		return currentPage;
+	public int getCurrentPageNumber() {
+		return currentPageNumber;
 	}
 
 	public List<Member> getMemberList() {
 		return memberList;
 	}
 
-	public int getCountPerPage() {
-		return countPerPage;
+	public int getPageTotalCount() {
+		return pageTotalCount;
+	}
+
+	public int getMemberCountPerpage() {
+		return memberCountPerpage;
 	}
 
 	public int getStartRow() {
 		return startRow;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "MemberListView [memberTotalCount=" + memberTotalCount + ", currentPageNumber=" + currentPageNumber
+				+ ", memberList=" + memberList + ", pageTotalCount=" + pageTotalCount + ", memberCountPerpage="
+				+ memberCountPerpage + ", startRow=" + startRow + "]";
+	}
+
 	
 }

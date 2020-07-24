@@ -15,10 +15,10 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import jdbc.ConnectionProvider;
+import app.jdbc.ConnectionProvider;
+import app.service.Service;
 import member.dao.MemberDao;
 import member.model.Member;
-import service.Service;
 
 public class MemberRegServiceImpl implements Service {
 
@@ -78,7 +78,7 @@ MemberDao dao;
 					} else { // type=file
 						
 						// 서버 내부의 경로
-						String uri = "/upload/user";
+						String uri = "/upload/users";
 	
 						//String uri = request.getSession().getServletContext().getInitParameter("uploadPath");
 	
@@ -141,8 +141,19 @@ MemberDao dao;
 					e.printStackTrace();
 				}
 			}
+			
 		}
 		
 		return "/WEB-INF/views/member/reg.jsp";
 	}
+
 }
+
+
+
+
+
+
+
+
+

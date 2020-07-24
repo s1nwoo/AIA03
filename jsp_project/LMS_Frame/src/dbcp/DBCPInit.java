@@ -38,18 +38,17 @@ public class DBCPInit extends HttpServlet {
 	private void initConnectionPool () {
 		
 		try {
-			String jdbcDriver = 
-					"jdbc:mysql://localhost:3306/project"
-					+ "?autoReconnect=true"
-					+ "&useUnicode=true"
-					+ "&characterEncoding=utf-8"
-					+ "&servertimezone=UTC";
+			/*
+			 * String jdbcDriver = "jdbc:mysql://localhost:3306/project" +
+			 * "?autoReconnect=true" + "&useUnicode=true" + "&characterEncoding=utf-8" +
+			 * "&servertimezone=UTC";
+			 */
 			
 			// 후에 localhost를  AWS 인스턴스 연결로 변경해주면 됨.
-			// String jdbcDriver = "jdbc:mysql://AWS인스턴스 DNS주소/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&servertimezone=UTC";
+			String jdbcDriver = "jdbc:mysql://lms-testdb.cqjud1dl4kah.ap-northeast-2.rds.amazonaws.com:3306/project?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&servertimezone=UTC";
 			
-			String username = ""; // 설정한 mysql 유저 네임
-			String pw = ""; // 설정한 mysql 유저 비밀번호
+			String username = "test"; // 설정한 mysql 유저 네임
+			String pw = "wkddbsdnjsdhl5aud"; // 설정한 mysql 유저 비밀번호
 			
 			// 커넥션 풀이 새로운 커넥셔ㅑㄴ을 생성할 때 사용할 커넥션팩토리 객체 생성
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcDriver, username, pw);
