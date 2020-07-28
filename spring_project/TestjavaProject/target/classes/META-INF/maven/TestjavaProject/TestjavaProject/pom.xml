@@ -3,8 +3,26 @@
   <groupId>TestjavaProject</groupId>
   <artifactId>TestjavaProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>TestjavaProject</name>
-  <description>TestjavaProject</description>
+  <name>TsetJava</name>
+  <description>maven project</description>
+  
+  <dependencies>
+  	
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>4.3.18.RELEASE</version>  	
+  	</dependency>
+  	
+  </dependencies>
+  
+  
+  
+  
+  
+  
+  
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
