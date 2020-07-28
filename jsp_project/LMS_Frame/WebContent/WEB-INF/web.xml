@@ -58,7 +58,7 @@
  <filter-mapping>
   	<filter-name>LoginFilter</filter-name>
   	<url-pattern>/login.do</url-pattern>  <!-- 박혜미 추가부분 200724 -->
-  </filter-mapping>
+ </filter-mapping>
   
   
   

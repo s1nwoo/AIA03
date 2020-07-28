@@ -27,6 +27,7 @@ public class FrontController extends HttpServlet {
 
     @Override
    // 프로퍼티 파일에서 키값과 클래스 정보를 추출하여 그것을 Map에 저장합니다.
+    // 클라이언트로부터 요청이 들어오면 한번 실행됨
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
     	
@@ -63,11 +64,11 @@ public class FrontController extends HttpServlet {
 				System.out.println("요청경로-서비스 확인용:"+command + "=" + service );
 				
 			} catch (ClassNotFoundException e) {
-				
+				e.printStackTrace();
 			} catch (InstantiationException e) {
-				
+				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				
+				e.printStackTrace();
 			}
 		}
 		

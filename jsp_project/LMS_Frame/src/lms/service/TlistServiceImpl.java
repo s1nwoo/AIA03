@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbcp.ConnectionProvider;
-import lms.dao.StudentDao;
 import lms.dao.TeacherDao;
-import lms.model.Student;
-import lms.model.StudentListView;
 import lms.model.Teacher;
 import lms.model.TeacherListView;
 

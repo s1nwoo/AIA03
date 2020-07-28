@@ -2,18 +2,12 @@ package lms.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbcp.ConnectionProvider;
-import lms.dao.StudentDao;
 import lms.dao.TeacherDao;
-import lms.model.Student;
 import lms.model.Teacher;
 
 public class TaddServiceImpl implements Service {

@@ -2,10 +2,12 @@ package lms.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -27,12 +29,14 @@ public class SAddFormCourseListServiceImpl implements Service {
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		
-		CourseListView cListView=null;
+		
 		Connection conn= null;
-		int resultCnt = 0;
-		String result = "N";
+		
+		CourseListView cListView=null;
 		List<Course> courseList = null;
 		String listJson = null;
+		int resultCnt = 0;
+		String result = "N";
 		
 		try {
 			

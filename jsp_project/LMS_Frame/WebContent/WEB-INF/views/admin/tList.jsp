@@ -223,7 +223,7 @@ a {
 						<td>${teacher.tel}</td>
 						<td>${teacher.email}</td>
 						<td><button id="viewModify" class="" onClick="viewModify()">수정</button></td>
-						<td><button id="viewDel" class="" onClick="viewDel()">삭제</button></td>
+						<td><button id="doDel" class="" onClick="doDel(${teacher.tIdx})">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -455,10 +455,14 @@ a {
 
 	}
 
-	function doDel(form) {
+	function doDel(tIdx) {
 
-		document.getElementById('delArea').style.display = 'none';
-		form.submit();
+		if(confirm('선택하신 강사 정보를 삭제하시겠습니까?')){
+			location.href = 'tDelete.do?tIdx='+tIdx;
+		}
+		
+		/* document.getElementById('delArea').style.display = 'none';
+		form.submit(); */
 
 	}
 </script>

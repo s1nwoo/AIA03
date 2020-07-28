@@ -124,7 +124,7 @@ public class TeacherDao {
 	}
 
 	// 교수 내정보 삭제 : delete
-	public int deleteCourse(Connection conn, Teacher teacher) throws SQLException {
+	public int deleteTeacher(Connection conn, int tIdx) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -132,7 +132,7 @@ public class TeacherDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, teacher.gettIdx());
+			pstmt.setInt(1, tIdx);
 
 			result = pstmt.executeUpdate();
 
@@ -184,10 +184,10 @@ public class TeacherDao {
 		return teacherList;
 	}
 
-	// 교수 이름으로 조회
-	public int selectTeacherByIdx(Connection conn, Teacher teacher) throws SQLException {
+	// 교수 교번으로 조회
+	public Teacher selectTeacherByIdx(Connection conn, int tIdx) throws SQLException {
 
-		int result = 0;
+		Teacher teacherInfo = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs;
@@ -197,12 +197,19 @@ public class TeacherDao {
 			String sql = "SELECT * FROM project.teacher where tIdx=?;";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, teacher.gettIdx());
+			pstmt.setInt(1, tIdx);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				result = rs.getInt(1);
+				teacherInfo = new Teacher(
+										rs.getInt("tIdx"),
+										rs.getString("pw"),
+										rs.getString("name"),
+										rs.getString("tel"),
+										rs.getString("email"),
+										rs.getString("major"),
+										rs.getString("job"));
 			}
 
 		} finally {
@@ -211,7 +218,7 @@ public class TeacherDao {
 			}
 		}
 
-		return result;
+		return teacherInfo;
 
 	}
 

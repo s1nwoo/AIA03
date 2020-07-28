@@ -1,13 +1,8 @@
 package lms.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import dbcp.ConnectionProvider;
 
 public class LoginServiceImpl implements Service {
 
@@ -20,30 +15,14 @@ public class LoginServiceImpl implements Service {
 		String type = (String) session.getAttribute("loginType");
 		System.out.println("type :" +type);
 		String path = null;
-		Connection conn = null;
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			
-			if(type.equals("sLogin")) {
-				path = "/WEB-INF/views/student/sMyPage.jsp";
-			} else if(type.equals("tLogin")) {
-				path = "/WEB-INF/views/teacher/tMyPage.jsp";
-			} else {
-				path = "/WEB-INF/views/admin/cList.jsp";
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if(conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+
+		if(type.equals("sLogin")) {
+			path = "/WEB-INF/views/student/sMyPage.jsp";
+		} else if(type.equals("tLogin")) {
+			path = "/WEB-INF/views/teacher/tMyPage.jsp";
+		} else {
+			path = "/WEB-INF/views/admin/cList.jsp";
 		}
-		
 		
 		return path;
 	}

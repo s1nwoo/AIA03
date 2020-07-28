@@ -15,7 +15,7 @@ public class CdeleteServiceImpl implements Service {
 
 	// 자신이 사용할 Dao/Model/Service resurve 파일 번호를 항상 공유해주세용!
 	CourseDao dao;
-	
+	Student student;
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(false);
@@ -23,8 +23,9 @@ public class CdeleteServiceImpl implements Service {
 		
 		int resultCnt = 0;		
 		Connection conn = null;
-		Student student = null;
+		String path = null;
 		int cIdx = Integer.parseInt(request.getParameter("cIdx"));
+		int sIdx = Integer.parseInt(request.getParameter("sIdx"));
 		
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -32,9 +33,11 @@ public class CdeleteServiceImpl implements Service {
 			
 			if(type.equals("tLogin")){
 				resultCnt = dao.deleteCourse(conn, cIdx);
+				path = "/WEB-INF/views/teacher/tMypage.jsp";
 			} else {
 				student = (Student)session.getAttribute("info");
-				resultCnt = dao.deleteMyCourse(conn, cIdx, student);
+				resultCnt = dao.deleteMyCourse(conn, cIdx, sIdx);
+				path = "/WEB-INF/views/student/sClassAddForm.jsp";
 			}
 			
 			request.setAttribute("resultCnt", resultCnt);
@@ -52,7 +55,7 @@ public class CdeleteServiceImpl implements Service {
 			}
 		}
 		
-		return "/WEB-INF/views/teacher/tMypage.jsp";
+		return path;
 	}
 
 }

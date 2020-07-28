@@ -158,23 +158,23 @@
             
                 <table width=100% border=0>
                     <tr><td width=50% class="alignRight">교과목명</td>
-                        <td width=45% class="alignLeft"><input type="text" id="search" name="name"></td></tr>
+                        <td width=45% class="alignLeft"><input type="text" id="name" name="name"></td></tr>
                     <tr><td class="alignRight">교수명</td>
-                        <td class="alignLeft"><input type="text" id="search" name="teacher"></td></tr>                
+                        <td class="alignLeft"><input type="text" id="teacher" name="teacher"></td></tr>                
                     <tr><td class="alignRight">과목내용</td>
-                        <td class="alignLeft"><input type="text" id="search" name="content"></td></tr>
+                        <td class="alignLeft"><input type="text" id="content" name="content"></td></tr>
                     <tr><td class="alignRight">요일</td>
-                        <td class="alignLeft"><input type="text" id="search" name="day"></td></tr>
+                        <td class="alignLeft"><input type="text" id="day" name="day"></td></tr>
                     <tr><td class="alignRight">시작시간</td>
-                        <td class="alignLeft"><input type="number" id="search" name="startTime"></td></tr>
+                        <td class="alignLeft"><input type="number" id="startTime" name="startTime"></td></tr>
                     <tr><td class="alignRight">종료시간</td>
-                        <td class="alignLeft"><input type="number" id="search" name="endTime"></td></tr>
+                        <td class="alignLeft"><input type="number" id="endTime" name="endTime"></td></tr>
                     <tr><td class="alignRight">정원</td>
-                        <td class="alignLeft"><input type="number" id="search" name="totalPer"></td></tr>
+                        <td class="alignLeft"><input type="number" id="totalPer" name="totalPer"></td></tr>
                     <tr><td class="alignRight">현재인원</td>
-                        <td class="alignLeft"><input type="number" id="search" name="applyPer"></td></tr>
+                        <td class="alignLeft"><input type="number" id="applyPer" name="applyPer"></td></tr>
                     <tr><td class="alignRight">교수번호</td>
-                        <td class="alignLeft"><input type="number" id="search" name="tIdx"></td></tr>
+                        <td class="alignLeft"><input type="number" id="tIdx" name="tIdx"></td></tr>
                     <!-- <tr><td class="alignRight">강의실</td>
                         <td class="alignLeft"><input type="text" id="search"></td></tr> -->
                     <tr><td colspan="2">
@@ -194,12 +194,9 @@
 </body>
 
 <script>
-    function doInsert(form) {     
 
+    function doInsert(form) {
 
-
-
-        
         form.submit();
         
 

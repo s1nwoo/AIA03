@@ -5,12 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class InfoServiceImpl implements Service {
+	
+	
 
 	// 자신이 사용할 Dao/Model/Service resurve 파일 번호를 항상 공유해주세용!
 	
 	@Override
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		// session에서 로그인 타입과 객체 불러오기
+		
+		
 		HttpSession session = request.getSession(false);
 		String type = (String) session.getAttribute("loginType");
 		

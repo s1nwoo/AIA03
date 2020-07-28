@@ -126,8 +126,41 @@ public class StudentDao {
 
 	}
 
+	// 관리자의 학생 전체정보 수정 : update
+		public int editStudentByAdmin(Connection conn, int sIdx, String pw, String name, String major, int grade, String tel, String email) throws SQLException {
+
+			int result = 0;
+
+			PreparedStatement pstmt = null;
+
+			// 수정사항 : 전화번호/이메일
+			String sql = "update project.student set sIdx=?, pw=?,name=?,major=?,grade=?email=? where sIdx=?;";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, sIdx);
+				pstmt.setString(2, pw);
+				pstmt.setString(3, name);
+				pstmt.setString(4, major);
+				pstmt.setInt(5, grade);
+				pstmt.setString(6, tel);
+				pstmt.setString(7, email);
+				pstmt.setInt(8, sIdx);
+
+				result = pstmt.executeUpdate();
+
+			} finally {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			}
+
+			return result;
+
+		}
+	
 	// 학생 내정보 삭제 : delete
-	public int deleteStudent(Connection conn, Student student) throws SQLException {
+	public int deleteStudent(Connection conn, int sIdx) throws SQLException {
 
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -135,7 +168,7 @@ public class StudentDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, student.getsIdx());
+			pstmt.setInt(1, sIdx);
 
 			result = pstmt.executeUpdate();
 
@@ -188,9 +221,9 @@ public class StudentDao {
 	}
 
 	// 학생 이름으로 조회
-	public int selectStudentByIdx(Connection conn, Student student) throws SQLException {
+	public Student selectStudentByIdx(Connection conn, int sIdx) throws SQLException {
 
-		int result = 0;
+		Student studentInfo = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs;
@@ -200,12 +233,18 @@ public class StudentDao {
 			String sql = "SELECT * FROM project.student where sIdx=?;";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, student.getsIdx());
+			pstmt.setInt(1, sIdx);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				result = rs.getInt(1);
+				studentInfo = new Student(rs.getInt("sIdx"),
+										rs.getString("pw"),
+										rs.getString("name"),
+										rs.getString("tel"),
+										rs.getString("email"),
+										rs.getString("major"),
+										rs.getInt("grade"));
 			}
 
 		} finally {
@@ -214,7 +253,7 @@ public class StudentDao {
 			}
 		}
 
-		return result;
+		return studentInfo;
 
 	}
 

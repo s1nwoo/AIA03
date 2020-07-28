@@ -28,15 +28,18 @@ public class InfoEditServiceImpl implements Service {
 		String type = (String) session.getAttribute("loginType");
 			// student 객체에서 sIdx 가져오기
 		
-		// form에서 입력한 전화번호와 이메일 가져오기
+		// form에서 입력한 전화번호와 이메일 가져오기 
 		String tel = request.getParameter("tel");
 		String email = request.getParameter("email");
+		
+		System.out.println("로그인 타입 : " + type);
 		
 		// 변수 초기화
 		String path = null;
 		Connection conn = null;
 		int sIdx = 0;
 		int tIdx = 0;
+		int result = 0;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -46,14 +49,28 @@ public class InfoEditServiceImpl implements Service {
 			if(type.equals("sLogin")) {
 				student = (Student) session.getAttribute("info");
 				sIdx = student.getsIdx();
-				sDao.editStudent(conn, sIdx, tel, email);
+				result = sDao.editStudent(conn, sIdx, tel, email);
+				System.out.println("result : " + result);
+				
+				
+				request.setAttribute("chgTel", tel);
+				request.setAttribute("chgEmail", email);
+				request.setAttribute("result", result);
+				
 				path = "/WEB-INF/views/student/sInfo.jsp";
 			} else if(type.equals("tLogin")) {
 				teacher = (Teacher) session.getAttribute("info");
 				tIdx = teacher.gettIdx();
-				tDao.editTeacher(conn, tIdx, tel, email);
+				result = tDao.editTeacher(conn, tIdx, tel, email);
+				
+				System.out.println("result : " + result);
+				
+				request.setAttribute("chgTel", tel);
+				request.setAttribute("chgEmail", email);
+				request.setAttribute("result", result);
+				
 				path = "/WEB-INF/views/teacher/tInfo.jsp";
-			}
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally{
@@ -65,6 +82,7 @@ public class InfoEditServiceImpl implements Service {
 				}
 			}
 		}
+		
 		
 		return path;
 	}

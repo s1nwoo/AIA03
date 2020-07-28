@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,9 +134,7 @@ a {
 		</div> -->
 
 		<div id="contentsAll">
-
-			<form id="infoEditForm" action="editForm.do" method="post">
-		
+			<form id="infoEditForm" action="infoEdit.do" method="post">
 				<table width=100% border=0>
 					<tr>
 						<td width=50% class="alignRight">학과</td>
@@ -157,46 +153,47 @@ a {
 						<td class="alignLeft">${info.name}</td>
 					</tr>
 					<tr>
-						<td class="alignRight">비밀번호</td>
-						<td class="alignLeft"><input type="hidden" id="pw1" value="${info.pw}"></td>
+						<td class="alignLeft"><input type="hidden" id="pw1" name="pw1" value="${info.pw}"></td>
 					</tr>
 					<tr>
 						<td class="alignRight">비밀번호 확인</td>
-						<td class="alignLeft"><input type="password" id="pw2"></td>
+						<td class="alignLeft"><input type="password" id="pw2" name="pw2"><button id="chkPw" name="pw2" onClick="checkPw()">확인</button></td>
 					</tr>
-				<%-- <c:if test="${info.pw eq }"> 비밀번호 확인 실패 시--%> 
+				 <c:if test="${empty result or result == 0}">
 					<tr>
 						<td class="alignRight">핸드폰</td>
-						<td class="alignLeft"><input type="text" id="phone"
-							value="010-1234-1234"></td>
+						<td class="alignLeft">${info.tel}</td>
 					</tr>
 					<tr>
 						<td class="alignRight">이메일</td>
-						<td class="alignLeft"><input type="text" id="email"
-							value="1234@naver.com"></td>
+						<td class="alignLeft">${info.email}</td>
 					</tr>
-				<%-- </c:if> --%>
-				<c:if test="">
-					<tr>
+				 </c:if>
+				 <c:if test="${not empty result && result eq 1}">
+				 	<tr>
 						<td class="alignRight">핸드폰</td>
-						<td class="alignLeft"><input type="text" id="phone"
-							value="010-1234-1234"></td>
+						<td class="alignLeft">${chgTel}</td>
 					</tr>
 					<tr>
 						<td class="alignRight">이메일</td>
-						<td class="alignLeft"><input type="text" id="email"
-							value="1234@naver.com"></td>
+						<td class="alignLeft">${chgEmail}</td>
+					</tr>	
+				 </c:if>
+					<tr>
+						<td class="alignRight">수정할 전화번호</td>
+						<td class="alignLeft"><input type="text" id="tel" name="tel"></td>
 					</tr>
-				</c:if>
+					<tr>
+						<td class="alignRight">수정할 이메일</td>
+						<td class="alignLeft"><input type="text" id="email" name="email"></td>
+					</tr>
 					<tr>
 						<td colspan="2">
-
-							<button type="submit" id="modify" class=""
-								onClick="doModify(this.form)">수정</button>
-						</td>
+						<input type="submit" id="modify" class="" value="수정"></td>
 					</tr>
-				</table>
-			</form>
+			</table>
+		</form>
+			
 
 
 		</div>
@@ -208,11 +205,8 @@ a {
 </body>
 
 <script>
-	function doModify(form) {
-
-		form.submit();
-
-	}
+	
+	
 </script>
 
 </html>

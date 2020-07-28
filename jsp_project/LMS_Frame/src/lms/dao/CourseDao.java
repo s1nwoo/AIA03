@@ -167,7 +167,7 @@ public class CourseDao {
 
 		try {
 			// 학번으로 내가 등록한 강의 리스트 출력
-			String sql = "SELECT * FROM project.myCourse where sIdx=?";
+			String sql = "SELECT * FROM project.myCourse where sIdx=?;";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, student.getsIdx());
@@ -189,7 +189,7 @@ public class CourseDao {
 	}
 
 	// MyCourse 에 학생번호와 강의번호 Insert
-	public int insertMyCourse(Connection conn, MyCourse mycourse) throws SQLException {
+	public int insertMyCourse(Connection conn, int sIdx, int cIdx) throws SQLException {
 
 		int result = 0;
 
@@ -200,8 +200,8 @@ public class CourseDao {
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mycourse.getsIdx());
-			pstmt.setInt(2, mycourse.getcIdx());
+			pstmt.setInt(1, sIdx);
+			pstmt.setInt(2, cIdx);
 
 			result = pstmt.executeUpdate();
 
@@ -220,17 +220,19 @@ public class CourseDao {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
 		List<Course> selectMyCourseBysIdx = new ArrayList<Course>();
-
+		
 		String sql = "SELECT myCourse.*, course.* FROM myCourse"
-				+ "LEFT JOIN course on myCourse.cIdx = course.cIdx where myCourse.sIdx=?;";
+				+ " LEFT JOIN course on myCourse.cIdx = course.cIdx where myCourse.sIdx=?;";
 
 		try {
 
 			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setInt(1, sIdx);
 			rs = pstmt.executeQuery();
+			
 
 			while (rs.next()) {
 				Course course = new Course();
@@ -261,7 +263,8 @@ public class CourseDao {
 	}
 
 	// 수강신청한 강의 취소 : myCourse 조회 => delete ?
-	public int deleteMyCourse(Connection conn, int cIdx, Student student) throws SQLException {
+	// 0726 파라미터 수정 Connection, int, Student → Connection, int, int
+	public int deleteMyCourse(Connection conn, int cIdx, int sIdx) throws SQLException {
 
 		int result = 0;
 
@@ -269,10 +272,13 @@ public class CourseDao {
 
 		try {
 			// 학번으로 내가 등록한 강의 리스트 출력
-			String sql = "DELETE FROM project.myCourse where sIdx=? cIdx=?";
+			String sql = "DELETE FROM project.myCourse where sIdx=? and cIdx=?;";
 
+			System.out.println("dao - sidx는 : "+sIdx);
+			System.out.println("dao - cIdx는 : "+cIdx);
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, student.getsIdx());
+			pstmt.setInt(1, sIdx);
 			pstmt.setInt(2, cIdx);
 
 			result = pstmt.executeUpdate();
@@ -283,9 +289,36 @@ public class CourseDao {
 			}
 		}
 
+		System.out.println("dao - delmycourse의 result : "+result);
 		return result;
 
 	}
+	
+	// 수강신청한 강의 모두 취소 : myCourse 조회 => delete ?
+		public int resetMyCourse(Connection conn, Student student) throws SQLException {
+
+			int result = 0;
+
+			PreparedStatement pstmt = null;
+
+			try {
+				// 학번으로 내가 등록한 강의 리스트 출력
+				String sql = "DELETE FROM project.myCourse where sIdx=?;";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, student.getsIdx());
+
+				result = pstmt.executeUpdate();
+
+			} finally {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			}
+
+			return result;
+
+		}
 
 	// 개설된 강의 정보전체 리스트 : ArrayList ?
 	public List<Course> courseList(Connection conn) throws SQLException {

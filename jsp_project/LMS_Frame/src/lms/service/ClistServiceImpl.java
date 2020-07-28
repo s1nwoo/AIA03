@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dbcp.ConnectionProvider;
 import lms.dao.CourseDao;
-import lms.dao.TeacherDao;
 import lms.model.Course;
 import lms.model.CourseListView;
-import lms.model.Teacher;
-import lms.model.TeacherListView;
 
 public class ClistServiceImpl implements Service {
 
@@ -44,7 +41,7 @@ public class ClistServiceImpl implements Service {
 
 		request.setAttribute("cListView", cListView);
 
-		return "/WEB-INF/views/admin/cList.jsp";
+		return "/WEB-INF/views/admin/cList2.jsp";
 	}
 
 }

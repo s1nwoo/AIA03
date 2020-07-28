@@ -4,12 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LinkServiceImpl implements Service {
-
-	// Service 클래스 이용에 대한 예제 클래스입니다.
-	
 	
 	@Override
-	// 
 	public String getViewPage(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
