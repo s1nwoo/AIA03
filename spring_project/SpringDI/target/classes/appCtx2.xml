@@ -3,17 +3,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
 	<bean id="memberDao" class="di.dao.MemberDao"></bean>
-
+	
 	<bean id="memberregSvc" class="di.service.MemberRegisterService2">
-		<constructor-arg>
+	<!-- 프로퍼티 설정 방식은 setXXXX()설정 메서드를 사용해서 필요한 객체와 값을 전달받는다. -->
+		<property name="dao">
 			<ref bean="memberDao"/>
-		</constructor-arg>
+		</property>
 	</bean>
-
+	
 	<bean id="memberPwSvc" class="di.service.ChangePasswordService2">
-	<constructor-arg ref="memberDao"/>
+		<property name="dao" ref="memberDao"/>
 	</bean>
+	
+
+
+
+
+
+
+
+
+
 
 
 </beans>

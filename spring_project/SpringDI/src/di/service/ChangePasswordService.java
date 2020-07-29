@@ -6,6 +6,7 @@ import di.exception.IdPasswordNotMatchingException;
 import di.exception.MemberNotFoundException;
 
 public class ChangePasswordService {
+	
 	private MemberDao memberDao;
 
 	public ChangePasswordService(MemberDao memberDao) {

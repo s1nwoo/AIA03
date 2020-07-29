@@ -3,13 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+	<!-- 임의 빈 객체 전달 -->
+	<!-- 식별자를 갖지 않는 빈 객체를 생성해서 전달할 수도 있다. -->
+	<!-- <constructor-arg> 태그나 <property> 태그에 <bean> 태그를 중첩해서 사용 하면 된다. -->
 	<bean id="memberDao" class="di.dao.MemberDao"></bean>
 	
 	<bean id="memberregSvc" class="di.service.MemberRegisterService2">
-	<!-- 프로퍼티 설정 방식은 setXXXX()설정 메서드를 사용해서 필요한 객체와 값을 전달받는다. -->
 		<property name="dao">
-			<ref bean="memberDao"/>
+			<bean class="di.dao.MemberDao" />
 		</property>
 	</bean>
 	

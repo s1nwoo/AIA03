@@ -17,12 +17,18 @@ public class MainForSpring2 {
 
 	public static void main(String[] args) {
 		
-		ctx = new GenericXmlApplicationContext("classpath:appCtx2.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx2.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx3.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx4.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx5.xml");
+		ctx = new GenericXmlApplicationContext("classpath:appCtx6.xml");
 
 		Scanner reader = new Scanner(System.in);
 		while (true) {
 			System.out.println("명렁어를 입력하세요:");
+			
 			String command = reader.nextLine();
+			
 			if (command.equalsIgnoreCase("exit")) {
 				System.out.println("종료합니다.");
 				break;
@@ -40,16 +46,22 @@ public class MainForSpring2 {
 	}
 
 	private static void processNewCommand(String[] arg) {
-		if (arg.length != 5) {
+		if (arg.length != 5) { // new 이메일 이름 비밀번호 비밀번호
 			printHelp();
 			return;
 		}
-		MemberRegisterService2 regSvc = ctx.getBean("memberregSvc", MemberRegisterService2.class);
+		
+		// Spring Container 객체 저장 타입은 Object
+		MemberRegisterService2 regSvc = 
+				ctx.getBean("memberregSvc", MemberRegisterService2.class);
+		
+		
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
 		req.setName(arg[2]);
 		req.setPassword(arg[3]);
 		req.setConfirmPassword(arg[4]);
+		
 		if (!req.isPasswordEqualToConfirmPassword()) {
 			System.out.println("암호와 확인이 일치하지 않습니다.\n");
 			return;
@@ -67,7 +79,10 @@ public class MainForSpring2 {
 			printHelp();
 			return;
 		}
-		ChangePasswordService2 changePwdSvc = ctx.getBean("memberPwSvc", ChangePasswordService2.class);
+		
+		ChangePasswordService2 changePwdSvc = 
+				ctx.getBean("memberPwSvc", ChangePasswordService2.class);
+		
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");

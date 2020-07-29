@@ -7,20 +7,20 @@ import di.dao.MemberDao;
 import di.service.ChangePasswordService;
 import di.service.MemberRegisterService;
 
-@Configuration
+// @Configuration
 public class JavaConfig {
 
-	@Bean
+	// @Bean
 	public MemberDao memberDao() {
 		return new MemberDao();
 	}
 
-	@Bean
+	// @Bean
 	public MemberRegisterService memberRegSvc() {
 		return new MemberRegisterService(memberDao());
 	}
 
-	@Bean
+	// @Bean
 	public ChangePasswordService memberPwSvc() {
 		return new ChangePasswordService(memberDao());
 	}

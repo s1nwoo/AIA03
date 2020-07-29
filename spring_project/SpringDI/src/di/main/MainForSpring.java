@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import di.assembler.Assembler;
 import di.domain.RegisterRequest;
 import di.exception.AlreadyExistingMemberException;
 import di.exception.IdPasswordNotMatchingException;
@@ -13,17 +12,21 @@ import di.service.ChangePasswordService;
 import di.service.MemberRegisterService;
 
 public class MainForSpring {
-	
+			
+	// 조립기 객체 생성
 	private static GenericXmlApplicationContext ctx = null;
 
 	public static void main(String[] args) {
 		
+		// 조립기 객체 생성
 		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
 
 		Scanner reader = new Scanner(System.in);
 		while (true) {
 			System.out.println("명렁어를 입력하세요:");
+			
 			String command = reader.nextLine();
+			
 			if (command.equalsIgnoreCase("exit")) {
 				System.out.println("종료합니다.");
 				break;
@@ -46,8 +49,10 @@ public class MainForSpring {
 			return;
 		}
 		
-		// Spring Container 객체 저장 타입은 Object 
-		MemberRegisterService regSvc = ctx.getBean("memberregSvc", MemberRegisterService.class);
+		// Spring Container 객체 저장 타입은 Object
+		// 조립기 객체 생성
+		MemberRegisterService regSvc = 
+				ctx.getBean("memberregSvc", MemberRegisterService.class);
 		
 		
 		RegisterRequest req = new RegisterRequest();
@@ -55,6 +60,7 @@ public class MainForSpring {
 		req.setName(arg[2]);
 		req.setPassword(arg[3]);
 		req.setConfirmPassword(arg[4]);
+		
 		if (!req.isPasswordEqualToConfirmPassword()) {
 			System.out.println("암호와 확인이 일치하지 않습니다.\n");
 			return;
@@ -72,7 +78,11 @@ public class MainForSpring {
 			printHelp();
 			return;
 		}
-		ChangePasswordService changePwdSvc = ctx.getBean("memberPwSvc", ChangePasswordService.class);
+		
+		// 조립기 객체 생성
+		ChangePasswordService changePwdSvc = 
+				ctx.getBean("memberPwSvc", ChangePasswordService.class);
+		
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");

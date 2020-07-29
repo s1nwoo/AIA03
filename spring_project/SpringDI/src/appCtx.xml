@@ -3,17 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="memberDao" class="di.dao.MemberDao"></bean>
 
+	<bean id="memberDao" class="di.dao.MemberDao"></bean>
+	
+	
 	<bean id="memberregSvc" class="di.service.MemberRegisterService">
+	 	<!-- 가입서비스를 위해서는 의존관계인 memberDao가 필요함 -->
+	 	<!-- <constructor-arg/>태그를 이용하여 의존하는 객체를 전달한다. -->
 		<constructor-arg>
 			<ref bean="memberDao"/>
 		</constructor-arg>
 	</bean>
-
+	
 	<bean id="memberPwSvc" class="di.service.ChangePasswordService">
-	<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberDao" />
 	</bean>
+	
+
+
+
+
+
+
+
+
+
 
 
 </beans>

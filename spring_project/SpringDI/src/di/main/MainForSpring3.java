@@ -8,7 +8,6 @@ import di.domain.RegisterRequest;
 import di.exception.AlreadyExistingMemberException;
 import di.exception.IdPasswordNotMatchingException;
 import di.exception.MemberNotFoundException;
-import di.service.ChangePasswordService;
 import di.service.ChangePasswordService2;
 import di.service.MemberRegisterService2;
 
@@ -18,13 +17,17 @@ public class MainForSpring3 {
 
 	public static void main(String[] args) {
 		
-		String[] xmlConfigPath = {"classpath:config1.xml", "classpath:config2.xml"}; 
-		ctx = new GenericXmlApplicationContext(xmlConfigPath);
+		// 두 개 이상의 설정파일 사용하기
+		String[] configPath = {"classpath:config1.xml", "classpath:config2.xml"};
+		
+		ctx = new GenericXmlApplicationContext(configPath);
 
 		Scanner reader = new Scanner(System.in);
 		while (true) {
 			System.out.println("명렁어를 입력하세요:");
+			
 			String command = reader.nextLine();
+			
 			if (command.equalsIgnoreCase("exit")) {
 				System.out.println("종료합니다.");
 				break;
@@ -42,16 +45,22 @@ public class MainForSpring3 {
 	}
 
 	private static void processNewCommand(String[] arg) {
-		if (arg.length != 5) {
+		if (arg.length != 5) { // new 이메일 이름 비밀번호 비밀번호
 			printHelp();
 			return;
 		}
-		MemberRegisterService2 regSvc = ctx.getBean("memberregSvc", MemberRegisterService2.class);
+		
+		// Spring Container 객체 저장 타입은 Object
+		MemberRegisterService2 regSvc = 
+				ctx.getBean("memberregSvc", MemberRegisterService2.class);
+		
+		
 		RegisterRequest req = new RegisterRequest();
 		req.setEmail(arg[1]);
 		req.setName(arg[2]);
 		req.setPassword(arg[3]);
 		req.setConfirmPassword(arg[4]);
+		
 		if (!req.isPasswordEqualToConfirmPassword()) {
 			System.out.println("암호와 확인이 일치하지 않습니다.\n");
 			return;
@@ -69,7 +78,10 @@ public class MainForSpring3 {
 			printHelp();
 			return;
 		}
-		ChangePasswordService2 changePwdSvc = ctx.getBean("memberPwSvc", ChangePasswordService2.class);
+		
+		ChangePasswordService2 changePwdSvc = 
+				ctx.getBean("memberPwSvc", ChangePasswordService2.class);
+		
 		try {
 			changePwdSvc.changePassword(arg[1], arg[2], arg[3]);
 			System.out.println("암호를 변경했습니다.\n");
