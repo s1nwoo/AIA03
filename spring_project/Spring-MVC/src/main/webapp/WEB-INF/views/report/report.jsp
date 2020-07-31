@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h1>학번 : ${sno}</h1>
-	<h1>파일 : ${report}</h1>
-	
-	
-	
-	
+	<h1>학번 : ${sno}, 제출 파일 : ${report}</h1>
 </body>
 </html>
