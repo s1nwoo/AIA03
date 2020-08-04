@@ -9,6 +9,8 @@
 
 <body>
 	<h1>카카오 지도를 시작합니다</h1>
+	<%@ include file = "test.jsp"%>
+	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64673c1abc8cfe0b9803764ec5691a78&libraries=services,clusterer,drawing"></script>
 
@@ -42,7 +44,6 @@
 	</script>
 
 		<%@ include file = "geolocation.jsp"%>
-
 
 </body>
 </html>
