@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aia.op.jdbc.ConnectionProvider;
 import com.aia.op.member.dao.MemberDao;
+import com.aia.op.member.dao.MemberDaoInterface;
 import com.aia.op.member.model.LoginInfo;
 import com.aia.op.member.model.LoginRequest;
 import com.aia.op.member.model.Member;
@@ -19,25 +21,31 @@ import com.aia.op.util.CookieBox;
 @Service
 public class MemberLoginService {
 	
-	@Autowired
-	MemberDao dao;
+//	@Autowired
+//	MemberDao dao;
 
+	private MemberDaoInterface dao;
+	
+	@Autowired
+	private SqlSessionTemplate sessionTemplate;
+	
+	
 	public String login(
 			LoginRequest loginRequest, 
 			HttpSession session, 
 			HttpServletResponse response) {
 
+		// interface의 Mapper 객체 생성
+		dao = sessionTemplate.getMapper(MemberDaoInterface.class);
+		
+		
 		String loginResult = "";
-
-		Connection conn = null;
 
 		// 로그인 처리
 		Member member = null;
 
-		try {
-			conn = ConnectionProvider.getConnection();
 			
-			member = dao.selectByIdpw(conn, loginRequest.getUid(), loginRequest.getUpw());
+			member = dao.selectByIdpw(loginRequest.getUid(), loginRequest.getUpw());
 
 			System.out.println("LoginService Member : " + member);
 
@@ -65,10 +73,6 @@ public class MemberLoginService {
 				loginResult = "<script>" + "alert('아이디 또는 비밀번호가 틀립니다.');" + "history.go(-1);" + "</script>";
 			}
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		return loginResult;
 
