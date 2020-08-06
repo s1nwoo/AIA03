@@ -13,14 +13,14 @@ public class IdCheckController {
 	
 	@Autowired
 	IdCheckService idCheckService;
-	 
+	
 	@RequestMapping("/member/idCheck")
 	@ResponseBody // 메서드의 반환 데이터를 뷰의 데이터로 사용
 	public String idCheck(
 			@RequestParam("uid") String uid
 			) {
 		
-		return idCheckService.checkId(uid);
+		return idCheckService.checkId(uid); // "Y" "N"
 	}
 
 }

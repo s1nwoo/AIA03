@@ -8,7 +8,7 @@
 
 <insert id="insertMember" parameterType="com.aia.op.member.model.Member">
 
-INSERT INTO project.member (uid, upw, uname, uphoto ) VALUES (#{uid},#{upw},#{uname},#{uphot})
+INSERT INTO project.member (uid, upw, uname, uphoto ) VALUES (#{uid},#{upw},#{uname},#{uphoto})
 
 </insert>
 
