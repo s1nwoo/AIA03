@@ -32,6 +32,15 @@
 		</beans:property>
 	</beans:bean>
 
+	<!-- Interceptor 설정 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/mypage/**"/>
+			<beans:bean class="com.aia.op.intercepter.AutoCheckIntercepter"/>
+		</interceptor>
+	</interceptors>
+	
+	
 	
 	
 	<context:component-scan base-package="com.aia.op" />
