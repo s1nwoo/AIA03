@@ -21,7 +21,7 @@ public class MemberListJsonService {
 		
 		dao = template.getMapper(MemberDaoInterface.class);
 		
-		return dao.SelectTotalList();
+		return dao.selectTotalList();
 	}
 	
 	

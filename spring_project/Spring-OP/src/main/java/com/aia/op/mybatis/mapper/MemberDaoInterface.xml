@@ -121,5 +121,14 @@
 	엘리먼트 <>를 엘리먼트의 시작과 끝으로 인식하지 않도록 처리
 	-->
 
+	<update id="verify">
+		update project.member set verify='Y' 
+		where uid=#{param1} and code=#{param2} 
+	</update>
+	
+	<select id="selectMemberById" resultMap="resultMember">
+		select * from project.member where uid=#{id}
+	</select>
+
 </mapper>	
 	

@@ -69,7 +69,7 @@ public class MemberRegController {
 		
 		/* System.out.println("member : "+member); */
 		
-		// model.addAttribute("result", regService.memberReg(regRequest, request));
+		model.addAttribute("result", regService.memberReg(regRequest, request));
 		
 		return "member/memberReg";
 	}
