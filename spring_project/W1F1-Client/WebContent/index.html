@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<style>
+#commentList {
+	overflow: hidden;
+}
+
+	div.card {
+		width : 33%;
+		float: left;
+		
+		border : 1px solid #DDD;
+		
+	}
+	
+	div.card>ul>li {
+		list-style: none;
+		
+		font-size: 12px;
+	}
+
+</style>
+
+<body>
+
+	<h2>댓글 리스트</h2>
+	<hr>
+	<div id="commentList"></div>
+	<hr>
+
+	<h2>댓글 작성</h2>
+	<form id="commentForm" onsubmit="return false;">
+		<input type="text" name="content" id="content" placeholder="댓글을 작성하세요">
+		<br> 
+		<input type="submit" value="댓글등록" onclick="commentSubmit();">
+	</form>
+
+<script>
+
+	$(document).ready(function(){
+	
+		commentList();
+	
+	});
+	
+	function commentSubmit(){
+		
+		var commentFormData = new FormData();
+		commentFormData.append('content', $('#content').val());
+		
+			$.ajax({
+				url: 'http://localhost:8080/cm/comment',
+				type: 'POST',
+				data: commentFormData,
+				success: function(data){
+					alert(data);
+					commentList();
+					document.getElementById('commentForm').reset();
+				}
+				
+			});
+	}
+	
+	function commentList(){
+		
+		$.ajax({
+			url: 'http://localhost:8080/cm/comment' ,	
+			type: 'GET',
+			success: function(data){
+				
+				var html = '';
+				
+				for(var i=0; i<data.length; i++){
+					html += '<div class="card">';
+					html += '	<ul>';
+					html += '		<li>댓글번호 : '+data[i].idx+'</li>';
+					html += '		<li>댓글내용 : '+data[i].content+'</li>';
+					html += '		<li>작성일시 : '+data[i].toDate+'</li>';
+					html += '		<li>댓글상태 : '+data[i].state+'</li>';
+					html += '		<li><input type="button" value="수정" onclick="editForm('+data[i].idx+')"> ';
+					html += '		<input type="button" value="삭제" onclick="deleteMember('+data[i].idx+')"></li>';
+					html += '	</ul>';
+					html += '</div>';
+					
+				}
+			$('#commentList').html(html);
+				
+			}
+		});
+		
+		
+	}
+	
+	
+	
+</script>
+
+</body>
+</html>

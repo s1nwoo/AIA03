@@ -5,21 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aia.mm.dao.MemberDao;
-import com.aia.mm.model.Member;
 
 @Service
-public class MemberViewService {
-	
+public class MemberDeleteService {
+
 	private MemberDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public Member getMember(int idx) {
+	public int deleteMember(int idx) {
 		
 		dao = template.getMapper(MemberDao.class);
 		
-		return dao.selectByIdx(idx);
+		return dao.deleteMember(idx);
 	}
 	
 	
@@ -27,5 +26,9 @@ public class MemberViewService {
 	
 	
 	
-
+	
+	
+	
+	
+	
 }
