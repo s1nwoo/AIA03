@@ -6,30 +6,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wifi.comment.dao.CommentDao">
 
 	<!-- 댓글 리스트 -->
-	<select id="commentList" resultType="com.wifi.comment.model.Comment">
+	<select id="listComment"
+		resultType="com.wifi.comment.model.Comment">
 		select * from project.comment
 	</select>
 
 	<!-- 댓글 등록 -->
 	<insert id="insertComment"
 		parameterType="com.wifi.comment.model.Comment">
-		insert into project.comment (content) values (#{content})
+		insert into project.comment (content) values
+		(#{content})
 	</insert>
 
 	<!-- 댓글 수정 -->
 	<update id="editComment"
 		parameterType="com.wifi.comment.model.Comment">
-		update project.comment 
-		set content=#{content} 
-		where idx=#{idx}
+		update project.comment
+		set content=#{content}
+		where
+		idx=#{idx}
 	</update>
-	
+
 	<!-- 댓글 삭제 -->
 	<delete id="deleteComment">
 		delete from project.comment where idx=#{idx}
 	</delete>
 
-
+	<!-- 댓글 선택 -->
+	<select id="selectCommentByIdx"
+		resultType="com.wifi.comment.model.Comment">
+		select * from project.comment where idx=#{idx}
+	</select>
 
 
 

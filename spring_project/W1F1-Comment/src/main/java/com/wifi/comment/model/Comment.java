@@ -35,13 +35,6 @@ public class Comment {
 		this.idx = idx;
 	}
 
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
 
 	public String getContent() {
 		return content;
@@ -55,16 +48,25 @@ public class Comment {
 		return state;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	public void setState(int state) {
 		this.state = state;
 	}
 	
-	// java.sql.Date -> java.util.Date
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	public java.util.Date getToDate() {// ${member.toDate}
-		return new java.util.Date(regdate.getTime());
+	public Date getRegdate() {
+		return regdate;
 	}
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+	
+	
+	//java.sql.Date -> java.util.Date
+	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul") 
+	 public java.util.Date getToDate() {// ${member.toDate} return new
+		 return new java.util.Date(regdate.getTime()); }
+	 
 
 	@Override
 	public String toString() {
