@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.wifi.comment.model.Comment;
+import com.wifi.comment.model.Criteria;
 
 public interface CommentDao {
 
@@ -18,11 +19,10 @@ public interface CommentDao {
 	int editComment(Comment comment);
 	
 	// 댓글 삭제 delete
-	int deleteComment(int idx);
+	int deleteComment(int cIdx);
 	
 	// 댓글 선택
-	Comment selectCommentByIdx(int idx);
-	
-	
+	Comment selectCommentByCidx(int cIdx);
+
 	
 }

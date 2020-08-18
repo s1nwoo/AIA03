@@ -14,11 +14,11 @@ public class CommentDeleteService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public int deleteCommnet(int idx) {
+	public int deleteCommnet(int cIdx) {
 		
 		dao = template.getMapper(CommentDao.class);
 		
-		return dao.deleteComment(idx);
+		return dao.deleteComment(cIdx);
 		
 	}
 	

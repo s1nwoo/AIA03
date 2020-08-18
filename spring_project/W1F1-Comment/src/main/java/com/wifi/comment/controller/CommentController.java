@@ -71,33 +71,33 @@ public class CommentController {
 	}
 	
 	// 댓글 수정
-	@PostMapping("/{idx}") // PUT
+	@PostMapping("/{cIdx}") // PUT
 	public int edit(
-			@PathVariable("idx") int idx,
+			@PathVariable("cIdx") int cIdx,
 			CommentEditRequest editRequest,
 			HttpServletRequest request
 			) {
 		
-		editRequest.setIdx(idx);
+		editRequest.setCidx(cIdx);
 		
 		return commentEditService.editComment(editRequest, request);
 		
 	}
 	
 	// 댓글 선택
-	@GetMapping("/{idx}")
+	@GetMapping("/{cIdx}")
 	public Comment getComment(
-			@PathVariable("idx") int idx
+			@PathVariable("cIdx") int cIdx
 			) {
-		return commentViewService.getComment(idx);
+		return commentViewService.getComment(cIdx);
 	}
 	
 	// 댓글 삭제
-	@DeleteMapping("/{idx}")
+	@DeleteMapping("/{cIdx}")
 	public int delete(
-			@PathVariable("idx") int idx
+			@PathVariable("cIdx") int cIdx
 			) {
-		return commentDeleteService.deleteCommnet(idx);
+		return commentDeleteService.deleteCommnet(cIdx);
 	}
 	
 

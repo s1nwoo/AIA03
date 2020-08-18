@@ -24,18 +24,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update project.comment
 		set content=#{content}
 		where
-		idx=#{idx}
+		cidx=#{cidx}
 	</update>
 
 	<!-- 댓글 삭제 -->
 	<delete id="deleteComment">
-		delete from project.comment where idx=#{idx}
+		delete from project.comment where cidx=#{cidx}
 	</delete>
 
 	<!-- 댓글 선택 -->
-	<select id="selectCommentByIdx"
+	<select id="selectCommentByCidx"
 		resultType="com.wifi.comment.model.Comment">
-		select * from project.comment where idx=#{idx}
+		select * from project.comment where cidx=#{cidx}
 	</select>
 
 

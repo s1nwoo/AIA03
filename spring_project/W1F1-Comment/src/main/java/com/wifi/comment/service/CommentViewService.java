@@ -15,11 +15,11 @@ public class CommentViewService {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public Comment getComment(int idx) {
+	public Comment getComment(int cIdx) {
 		
 		dao = template.getMapper(CommentDao.class);
 		
-		return dao.selectCommentByIdx(idx);
+		return dao.selectCommentByCidx(cIdx);
 		
 	}
 	

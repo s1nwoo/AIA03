@@ -2,18 +2,18 @@ package com.wifi.comment.model;
 
 public class CommentEditRequest {
 
-	private int idx;
+	private int cidx;
 	private String content;
 	private int state;
 	
-	public int getIdx() {
-		return idx;
+	public int getCidx() {
+		return cidx;
 	}
 
 
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setCidx(int cidx) {
+		this.cidx = cidx;
 	}
 
 
@@ -44,13 +44,12 @@ public class CommentEditRequest {
 
 	public Comment toComment() {
 
-		return new Comment(idx, null, content, state);
-		
+		return new Comment(cidx, null, content, state, 0, 0);
 	}
 
 	@Override
 	public String toString() {
-		return "CommentEditRequest [idx=" + idx + ", content=" + content + ", state=" + state + "]";
+		return "CommentEditRequest [cidx=" + cidx + ", content=" + content + ", state=" + state + "]";
 	}
 	
 	
