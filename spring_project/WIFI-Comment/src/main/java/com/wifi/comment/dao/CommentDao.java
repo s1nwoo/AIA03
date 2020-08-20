@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.wifi.comment.model.Comment;
+import com.wifi.comment.model.Criteria;
 
 public interface CommentDao {
 
@@ -24,6 +25,8 @@ public interface CommentDao {
 	Comment selectCommentByCidx(int cidx);
 
 	// 댓글 개수
-	int totalCount();
+	int countBoardList();
+	
+	List<Map<String, Object>> selectBoardList(Criteria cri);
 	
 }

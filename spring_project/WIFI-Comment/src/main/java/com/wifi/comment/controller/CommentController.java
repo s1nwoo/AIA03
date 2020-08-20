@@ -1,6 +1,7 @@
 package com.wifi.comment.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,14 +15,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wifi.comment.model.Comment;
 import com.wifi.comment.model.CommentEditRequest;
 import com.wifi.comment.model.CommentRegRequest;
+import com.wifi.comment.model.Criteria;
+import com.wifi.comment.model.PageMaker;
 import com.wifi.comment.service.CommentDeleteService;
 import com.wifi.comment.service.CommentEditService;
 import com.wifi.comment.service.CommentInsertService;
 import com.wifi.comment.service.CommentListService;
+import com.wifi.comment.service.CommentTotalService;
 import com.wifi.comment.service.CommentViewService;
 
 @RestController
@@ -49,7 +54,8 @@ public class CommentController {
 	@Autowired
 	private CommentDeleteService commentDeleteService;
 
-	
+	@Autowired
+	private CommentTotalService commentTotalService;
 	
 	// 댓글 등록
 	@PostMapping // POST 
@@ -68,7 +74,24 @@ public class CommentController {
 		return commentListService.getCommentList();	
 	}
 	
-	
+//	@GetMapping
+//	public ModelAndView openBoardList(Criteria cri) throws Exception {
+//        
+//    ModelAndView mav = new ModelAndView();
+//        
+//    PageMaker pageMaker = new PageMaker();
+//    pageMaker.setCri(cri);
+//    pageMaker.setTotalCount(commentTotalService.countBoardListTotal());
+//        
+//    List<Map<String,Object>> list = boardService.selectBoardList(cri);
+//    mav.addObject("list", list);
+//    mav.addObject("pageMaker", pageMaker);
+//        
+//    return mav;
+//        
+//}
+
+
 	
 	// 댓글 수정
 	@PostMapping("/{cidx}") // PUT

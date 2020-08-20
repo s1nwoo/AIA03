@@ -39,9 +39,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 댓글 개수 -->
-	<select id="totalCount">
-		select * count(*) from project.comment
+	<select id="countBoardList" resultType="Integer">
+		select count(*) from project.comment
 	</select>
+
+	<select id="selectBoardList" resultType="hashmap" parameterType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            project.comment
+        LIMIT #{pageStart}, #{perPageNum}
+    ]]>
+</select>
 
 
 
