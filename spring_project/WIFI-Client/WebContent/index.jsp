@@ -15,16 +15,8 @@
 #commentList {
 	overflow: hidden;
 }
-/* 
-div.card {
-	
-	width: 100%;
-	height: 30%;
-	float: left;
-	border: 1px solid #DDD;
-} */
 
-div.card>ul>li {
+div.card1>ul>li {
 	list-style: none;
 	font-size: 12px;
 }
@@ -41,8 +33,8 @@ button.deleteImg {
   background : url("images/delete.png");
   position : right;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 
@@ -50,8 +42,8 @@ button.editImg {
   background : url("images/pencil.png");
   position : right;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 
@@ -59,36 +51,88 @@ input.form-control{
 	width: 40%;
 }
 
+#cidx {
+	width: 3%;
+	display: none;
+}
+
+#editForm {
+	display: none;
+}
+
+#container {
+
+	padding: 50px;
+	
+}
+
 </style>
 
 <body>
 
+<div id="container">
 	<h3>댓글 리스트</h3>
 	<div id="commentList"></div>
+	<button class="btn btn-secondary">댓글 더보기</button>
 
-	<h3>댓글 작성</h3>
 	<form id="commentForm" onsubmit="return false;">
-		<input type="text" class="form-control" name="content" id="content" placeholder="댓글을 작성하세요" required>
+	<br>
+		<h3>댓글 작성</h3>
+		<input type="text" class="form-control" name="content" id="content" placeholder="댓글을 작성하세요">
+		<div class="invalid-feedback" id="invalid-feedback"> 내용을 입력하세요 </div>
+		<div class="valid-feedback" id="valid-feedback"> 댓글 등록 성공!</div>
 		<button class="btn btn-primary" onclick="commentSubmit();">등록</button>
 	</form>
 	
-	<h3>댓글 수정</h3>
 	<form id="editForm" onsubmit="return false;">
-		<input type="text" class="form-control" name="content" id="econtent" placeholder="댓글을 수정하세요" required>
-		<button type="button" class="btn btn-primary" onclick="editSubmit();">수정</button>
+	<br>
+	<h3>댓글 수정</h3>
+		<input type="text" class="form-control" name="cidx" id="cidx" readonly>
+		<input type="text" class="form-control" name="content" id="econtent" placeholder="댓글을 수정하세요">
+		<div class="invalid-feedback" id="invalid-feedback2"> 내용을 입력하세요 </div>
+		<button class="btn btn-primary" onclick="editSubmit();">수정</button>
+		<button class="btn btn-primary" onclick="editCancle();">취소</button>
 	</form>
+
+	<br>
+	<div>
+		<h3>남은 기능</h3>
+		<p>더보기버튼 페이징처리</p>
+		<!-- <p>수정 클릭 시 수정 시간 변경</p> -->
+		<p>CSS 수정</p>
+	</div>
+</div>
 
 <script>
 
 
-	var domain = 'http://ec2-13-209-17-96.ap-northeast-2.compute.amazonaws.com:8080/wifiComment/comment';
-	//var domain = 'http://localhost:8080/comment/comment'
+	//var domain = 'http://ec2-13-209-17-96.ap-northeast-2.compute.amazonaws.com:8080/wifiComment/comment';
+	var domain = 'http://localhost:8080/comment/comment'
 	
 	$(document).ready(function(){
 	
 		commentList();
 		
 	})
+
+	$('ul.list-group-item').each(function(){
+       var $ul = $(this),
+           $lis = $ul.find('li:gt(2)'),
+           isExpanded = $ul.hasClass('expanded');
+       $lis[isExpanded ? 'show' : 'hide']();
+
+       if($lis.length > 0){
+           $ul
+               .append($('<li class="expand"><span>' + (isExpanded ? 'Show Less' : 'Show More') + '</span></li>')
+               .click(function(event){
+                   var isExpanded = $ul.hasClass('expanded');
+                   event.preventDefault();
+                   $(this).text(isExpanded ? 'More' : 'Less');
+                   $ul.toggleClass('expanded');
+                   $lis.toggle();
+               }));
+       }
+});
 	
 	//prependTo()를 사용해서 더보기 
 	//$('.more').on('click', function(){
@@ -98,7 +142,15 @@ input.form-control{
 	function commentSubmit(){
 		
 		var commentFormData = new FormData();
-		commentFormData.append('content', $('#content').val());
+		
+		if($('#content').val() == ""){
+			$('#invalid-feedback').show(0).delay(2000).hide(500);
+			$('#valid-feedback').hide();
+		} else {
+			commentFormData.append('content', $('#content').val());
+			$('#invalid-feedback').hide();
+			$('#valid-feedback').show(0).delay(2000).hide(500);
+		}
 		
 			$.ajax({
 				url: domain,
@@ -128,16 +180,16 @@ input.form-control{
 				var len = data.length;
 				
 				for(var i=0; i<len; i++){
-					html += '<div class="card">';
+					html += '<div class="card1">';
 					html += '	<ul class="list-group-item">';	
 					//html += '		<li>댓글번호 : '+data[i].cidx+'</li>';
 					html += '		<li>작성자: '+data[i].midx+'</li>';
-					html += '		<li>'+data[i].regdate+'</li>';
+					html += '		<li id="date">'+data[i].regdate+'</li>';
 					html += '		<br>';
 					html += '		<li id="contentText">'+data[i].content;
 					//html += '		<li>댓글상태 : '+data[i].state+'</li>';
-					html += '		<button class="deleteImg" onclick="deleteComment('+data[i].cidx+')"></button>'
-					html += '		<button class="editImg" onclick="editForm('+data[i].cidx+')"></button></li>';
+					html += '		<button class="editImg" onclick="editForm('+data[i].cidx+')"></button>';
+					html += '		<button class="deleteImg" onclick="deleteComment('+data[i].cidx+')"></button></li>';
 					html += '	</ul>';
 					html += '</div>';
 				}
@@ -150,6 +202,9 @@ input.form-control{
 	
 
 	function editForm(cidx){
+		
+		$('#commentForm').hide();
+		$('#editForm').show();
 		
 		$.ajax({
 			url : domain+'/'+cidx,
@@ -168,7 +223,17 @@ input.form-control{
 	function editSubmit(){
 
 		var commentFormData = new FormData();
-		commentFormData.append('content', $('#econtent').val());
+		
+		if($('#econtent').val() == ""){
+			$('#invalid-feedback2').show().delay(2000).hide(500);
+		} else {
+			commentFormData.append('content', $('#econtent').val());
+			// $('#date').replaceWith('<li>ggg</li>')
+			$('#invalid-feedback2').hide();
+			$('#editForm').hide(500);
+			$('#commentForm').delay(700).show(500);
+		}
+		
 		
 		$.ajax({
 			url : domain+'/'+$('#cidx').val(),
@@ -181,9 +246,14 @@ input.form-control{
 				document.getElementById('editForm').reset();
 			}
 		});
-		
+
 	}
 
+	function editCancle(){
+		$('#editForm').hide();
+		$('#commentForm').show();
+	}
+	
 	
 	function deleteComment(cidx){
 		

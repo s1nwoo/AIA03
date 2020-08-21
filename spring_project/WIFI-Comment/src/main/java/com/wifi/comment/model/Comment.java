@@ -1,6 +1,6 @@
 package com.wifi.comment.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -9,7 +9,9 @@ public class Comment {
 	// 댓글 번호
 	private int cidx;
 	// 댓글 작성 시간
-	private Date regdate;
+	private Timestamp regdate;
+	// 댓글 수정 시간
+	private Timestamp updatedate;
 	// 댓글 내용
 	private String content;
 	// 댓글 상태
@@ -20,17 +22,18 @@ public class Comment {
 	private int iidx;
 
 	// CommentRegRequest -> Comment
-	public Comment(String content, Date regdate) {
-		this(0, regdate, content, 0, 0, 0);
+	public Comment(String content, Timestamp regdate, Timestamp updatedate) {
+		this(0, regdate, updatedate, content, 0, 0, 0);
 	}
 	
 	public Comment() {
 	}
 
 	
-	public Comment(int cidx, Date regdate, String content, int state, int midx, int iidx) {
+	public Comment(int cidx, Timestamp regdate, Timestamp updatedate, String content, int state, int midx, int iidx) {
 		this.cidx = cidx;
 		this.regdate = regdate;
+		this.updatedate = updatedate;
 		this.content = content;
 		this.state = state;
 		this.midx = midx;
@@ -78,22 +81,31 @@ public class Comment {
 		this.iidx = iidx;
 	}
 
-	public Date getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	public void setRegdate(Date regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 	
-	
+
+	public Timestamp getUpdatedate() {
+		return updatedate;
+	}
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	public void setUpdatedate(Timestamp updatedate) {
+		this.updatedate = updatedate;
+	}
 
 	@Override
 	public String toString() {
-		return "Comment [cidx=" + cidx + ", regdate=" + regdate + ", content=" + content + ", state=" + state
-				+ ", midx=" + midx + ", iidx=" + iidx + "]";
+		return "Comment [cidx=" + cidx + ", regdate=" + regdate + ", updatedate=" + updatedate + ", content=" + content
+				+ ", state=" + state + ", midx=" + midx + ", iidx=" + iidx + "]";
 	}
+
 	 
 
 
