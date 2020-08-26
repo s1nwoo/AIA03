@@ -110,3 +110,11 @@ spring_project/Spring-OP/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op/
 spring_project/Spring-Rest-test/target/m2e-wtp/web-resources/META-INF/maven/com.aia/rest/pom.properties
 spring_project/TestApp/target/m2e-wtp/web-resources/META-INF/maven/com.test/app/pom.properties
 spring_project/WIFI-Comment/target/m2e-wtp/web-resources/META-INF/maven/com.wifi/comment/pom.properties
+*.properties
+spring_project/APP-Member-Rest/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mm/pom.properties
+spring_project/Spring-KakaoMap/target/m2e-wtp/web-resources/META-INF/maven/com.aia/test/pom.properties
+spring_project/Spring-MVC/target/m2e-wtp/web-resources/META-INF/maven/com.aia/mvc/pom.properties
+spring_project/Spring-OP/target/m2e-wtp/web-resources/META-INF/maven/com.aia/op/pom.properties
+spring_project/Spring-Rest-test/target/m2e-wtp/web-resources/META-INF/maven/com.aia/rest/pom.properties
+spring_project/TestApp/target/m2e-wtp/web-resources/META-INF/maven/com.test/app/pom.properties
+spring_project/WIFI-Comment/target/m2e-wtp/web-resources/META-INF/maven/com.wifi/comment/pom.properties
