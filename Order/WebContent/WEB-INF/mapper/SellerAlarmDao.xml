@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 필수 : interface의 full name으로 설정 -->
+<mapper namespace="com.wifi.order.dao.SellerAlarmDao">
+	
+	<!-- 판매자 토탈 알림 -->
+	<select id="getAllAlarm" resultType="int">
+		select sum(state) from wifi.alarm_b where midx=#{midx}
+	</select>
+	
+	<!-- 판매자 개별 알림 -->
+	<select id="getAlarm" resultType="int">
+		select iidx from wifi.alarm_b where midx=#{midx} and state=1
+	</select>
+	
+	<!-- 판매자 참여자확정 알림 -->
+	
+	<!-- 판매자 참여자거절 알림 -->
+	<update id="cancleAlarm">
+		update wifi.alarm_b set state=0 where midx=#{param1} and iidx=#{param2}
+	</update>
+	
+	<!-- 구매자 참여신청 -->
+	<update id="updateAlarm">
+		update wifi.alarm_s set state=1 where midx=#{param1} and iidx=#{param2}
+	</update>
+</mapper>
+
+
+
+
+
+

@@ -46,7 +46,8 @@
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 <script>
-var mainUrl ="http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/order_v2/items";
+var mainUrl ="http://localhost:8080/order/items";
+//var mainUrl ="http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/order_v2/items";
 
 function regSubmit(){
 		var regFormData = new FormData();

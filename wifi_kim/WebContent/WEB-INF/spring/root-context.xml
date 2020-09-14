@@ -14,9 +14,9 @@
 	<bean id="dataSource" 
 		class="com.zaxxer.hikari.HikariDataSource"
 		p:driverClassName="com.mysql.cj.jdbc.Driver" 
-		p:jdbcUrl="jdbc:mysql://wifi-member.cqjud1dl4kah.ap-northeast-2.rds.amazonaws.com/wifi?autoReconnect=true" 
-		p:username="test"
-		p:password="test"
+		p:jdbcUrl="jdbc:mysql://aia.cedoxb9y9mdk.ap-northeast-2.rds.amazonaws.com:3306/wifi?serverTimezone=Asia/Seoul" 
+		p:username="admin"
+		p:password="aiaadmin"
 		>
 	</bean>			
 		

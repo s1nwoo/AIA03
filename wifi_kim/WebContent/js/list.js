@@ -1,77 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>w1-f1 : 같이 ( 사는 ) 가치</title>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-</head>
-<body>
-	<h1>오더페이지</h1>
-	<div><input type="number" name="midx" id="midx" value="${loginInfo.midx}"></div>
-	
-	<div class="searchBox">
-		<form onsubmit="return false;">
-			<select name="searchType" id="searchType">
-				<option value="">전체보기</option>
-				<option value="title">제목</option>
-				<option value="category">카테고리</option>
-			</select>
-			
-			
-			<div class="keywordBox">
-				<input type="text" name="keyword" id="keywordBox">
-				<input type="submit" value="검색" onclick="searchItem();">
-			</div>
-			
-			
-			<div class="categoryBox">
-				<select name="keyword" id="categoryBox">
-					<option value="0">과일</option>
-					<option value="1">육류</option>
-					<option value="2">해산물</option>
-					<option value="3">채소</option>
-					<option value="4">생필품</option>
-					<option value="5">음료</option>
-					<option value="">전체보기</option>
-				</select>
-				<input type="submit" value="검색" onclick="searchItem();">
-			</div>
-		</form>
-	</div>
-	
-	<button onclick="getMySellList();">aside</button>
-	
-	<br>
-	
-	<%@ include file="/WEB-INF/views/include/aside.jsp" %>
-	
-	<input type="button" value="글쓰기" onclick="itemReg();">
-	<div id="recommend_itemList"></div>
-	<br>
-	<div id="itemList"></div>
-	<br>
-	
-	<div id="itemDetails"></div>
-	
-	
-	
-</body>
-</html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-
-
-<script>
-
-
-
 var midx = ${loginInfo.midx};
 //var domain = "http://localhost:8080/wifi/order_v2/";
 var domain = "http://localhost:8080/order/";
 //var domain = "http://ec2-54-180-98-41.ap-northeast-2.compute.amazonaws.com:8080/order_v2/";
-
- 
 
 //item 객체 생성
 function Item(iidx, title, price, count_m, count_w, regdate, receive, addr,
@@ -276,6 +206,7 @@ function getItemListView_recommend(){
    	}
    	
    	});
+	
 	
 }
 
@@ -960,5 +891,3 @@ $(document).ready(function(){
 		   
 		   
 		}); // ready end 
-</script>
-
