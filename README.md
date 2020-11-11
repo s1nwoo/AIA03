@@ -19,7 +19,7 @@
 -----------
 ## &#9997; Python
 * [수업자료](https://github.com/s1nwoo/AIA03/tree/master/0.%20Class%20material/5.%20Python)
-* [공부자료](https://github.com/s1nwoo/AIA03/tree/master/5.%20Python)
+* [공부자료](https://github.com/s1nwoo/PythonChobo)
 -----------
 ## &#9997; Spring
 * [수업자료](https://github.com/s1nwoo/AIA03/tree/master/0.%20Class%20material/6.%20Spring%20Framework)
